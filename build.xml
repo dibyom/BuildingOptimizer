@@ -71,6 +71,7 @@
 		<delete dir="${build.dir}"/>
 		<delete dir="${dist.dir}"/>
 		<delete dir="${result.dir}"/>
+		<delete dir="Output" />
 		<delete>
 			<fileset dir="." includes="*.stat" />
 		</delete>

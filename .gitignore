@@ -69,3 +69,6 @@ eclim/.eclimrc_k
 
 #ECJ Statistics files
 *.stat
+
+#EnergyPlus 
+Output/**
