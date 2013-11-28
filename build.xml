@@ -102,7 +102,14 @@
 			<classpath refid="run.classpath" />
         </java>
 	</target>
-
+	
+	<target name="runeplus" depends="compile">
+		<java fork="true" classname="building.RunEnergyPlus.execute()" maxmemory="1024m">
+			<arg line="${args}"/>
+			<classpath refid="run.classpath" />
+        </java>
+	</target>
+	
 	<!-- RUNNING TASK - "ant test" -->
 	<target name="test" depends="compile">
 		<junit fork="yes">
