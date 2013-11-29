@@ -24,7 +24,9 @@ public class Building extends Problem implements SimpleProblemForm {
         float[] objectives = ((MultiObjectiveFitness)ind.fitness).getObjectives();
 
         float angle = (float)genome[0];
-       	
+       	/** @TODO
+            1. Change IDF File with angle value
+        */
        	modify_idf(angle);
 
        	objectives[0] = (float) 1;

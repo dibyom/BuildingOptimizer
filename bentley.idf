@@ -111,7 +111,7 @@ Version,
   8.0.0;  !- Version 
 
 Timestep,
-  4;  !- Number of Timesteps per Hour 
+  1;  !- Number of Timesteps per Hour 
 
 SimulationControl,
   Yes,  !- Do Zone Sizing Calculation 
@@ -152,7 +152,7 @@ ZoneAirHeatBalanceAlgorithm,
 Sizing:Parameters,
   1.2,  !- Heating Sizing Factor 
   1.2,  !- Cooling Sizing Factor 
-  4;  !- Time Steps in Averaging Window 
+  1;  !- Time Steps in Averaging Window 
 
 ConvergenceLimits,
   5,  !- Minimum System Timestep 
@@ -171,7 +171,7 @@ GlobalGeometryRules,
 
 Building,
   bentley,  !- Name 
-  30.0000,  !- North Axis 
+	60.0,	!- North Axis
   City,  !- Terrain 
   0.0400,  !- Loads Convergence Tolerance Value 
   0.2000,  !- Temperature Convergence Tolerance Value 
