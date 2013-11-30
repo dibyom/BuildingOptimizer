@@ -1,5 +1,5 @@
 
-parent.0 = params/nsga2.params
+parent.0 = nsga2.params
 
 eval.problem = building.Building
 generations = 700

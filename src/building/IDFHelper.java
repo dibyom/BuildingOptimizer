@@ -15,7 +15,7 @@ public class IDFHelper
 {
 	public static void main(String argv[])
 	{
-		double[] genome = {60.000, 60.000};
+		double[] genome = {90.000, 60.000};
 		modifyIDF(genome);
 	}
 	
@@ -26,7 +26,7 @@ public class IDFHelper
 	public static File modifyIDF(double[] genome)
 	{
 		int numDecisionVars = genome.length;
-		float angle = (float)genome[0];
+		double angle = genome[0];
 
 		String oldFileName = "bentley.idf";
 		String tmpFileName = "bentley.idf.temp";
@@ -71,6 +71,7 @@ public class IDFHelper
 		File newFile = new File(tmpFileName);
 		newFile.renameTo(oldFile); 
 
-		return newFile;
+		System.out.println(newFile.getName() + oldFile.getName());
+		 return oldFile;
 	}
 }

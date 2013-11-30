@@ -1,0 +1,10 @@
+	javadoc
+	clean
+	compile
+	run
+	Evolve
+	runeplus
+	idf
+	test
+	coveragetest
+	coverage
