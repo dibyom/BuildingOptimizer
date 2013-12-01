@@ -8,12 +8,10 @@ import ec.vector.*;
 
 import java.io.File;
 import java.io.IOException;
+
 public class Building extends Problem implements SimpleProblemForm {
 
-	public void evaluate(final EvolutionState state,
-        final Individual ind,
-        final int subpopulation,
-        final int threadnum)
+	public void evaluate(final EvolutionState state, final Individual ind, final int subpopulation, final int threadnum)
 	{
 		if( !( ind instanceof DoubleVectorIndividual ) )
             state.output.fatal( "The individuals for this problem should be DoubleVectorIndividuals." );
@@ -34,22 +32,23 @@ public class Building extends Problem implements SimpleProblemForm {
         {
           e.printStackTrace();
         }
+
         
-        
-        
-       	
-        objectives[0] = (float) 1;
-       	objectives[1] = (float) 2;
+        String[] lastRow = IDFHelper.parseBuildingCSV();
+        double electricity = Double.parseDouble(lastRow[1]);
+        double natural_gas = Double.parseDouble(lastRow[16]);
+        double energy = electricity + natural_gas;
+        double cost = 1 * electricity + 0.7 * natural_gas;
+
+        objectives[0] = (float) energy; 
+       	objectives[1] = (float) cost;
 
        	((MultiObjectiveFitness)ind.fitness).setObjectives(state, objectives);
         ind.evaluated = true;
 	}
 	
-  public static void modify_idf(float angle)
+  public static void compute_costs()
   {
-    //Open Bentley.idf
-    //Go to line 174
-    //Create a string to replace it
-    //Save File 
+    
   }
 }

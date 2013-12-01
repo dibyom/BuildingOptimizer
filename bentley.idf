@@ -171,7 +171,7 @@ GlobalGeometryRules,
 
 Building,
   bentley,  !- Name 
-	99.8512638133326,	!- North Axis
+	94.48573813949812,	!- North Axis
   City,  !- Terrain 
   0.0400,  !- Loads Convergence Tolerance Value 
   0.2000,  !- Temperature Convergence Tolerance Value 

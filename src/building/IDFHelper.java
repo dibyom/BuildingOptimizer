@@ -11,12 +11,17 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.FileOutputStream;
 
+import au.com.bytecode.opencsv.*;
+
+import java.util.List;
+
 public class IDFHelper
 {
 	public static void main(String argv[])
 	{
 		double[] genome = {90.000, 60.000};
-		modifyIDF(genome);
+		//modifyIDF(genome);
+		parseBuildingCSV();
 	}
 	
 	/**
@@ -60,7 +65,7 @@ public class IDFHelper
 			}	
 		}
 		catch (IOException e) {
-            	e.printStackTrace();
+			e.printStackTrace();
 		} 
 		
       // Once everything is complete, delete old file..
@@ -72,6 +77,36 @@ public class IDFHelper
 		newFile.renameTo(oldFile); 
 
 		System.out.println(newFile.getName() + oldFile.getName());
-		 return oldFile;
+		return oldFile;
 	}
+
+	/**
+	* Parse the building.csv file return the columns
+	* 
+	*/
+	public static String[] parseBuildingCSV()
+	{
+		String[] lastRow = null;
+		try
+		{
+			CSVReader reader = new CSVReader(new FileReader("Output/bentley.csv"), ',', '\"', 1);
+			String [] nextLine;
+			List csvRows = reader.readAll();
+			lastRow = (String[]) csvRows.get(csvRows.size()-1);
+			double electricity = Double.parseDouble(lastRow[1]);
+          	double natural_gas = Double.parseDouble(lastRow[16]);
+
+          	System.out.println("Total Electricity in Joules : " + lastRow[1] +"\t" +electricity);
+          	System.out.println("Total Natural Gas in Joules : " + lastRow[16] +"\t"+ natural_gas);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return lastRow;
+		
+	}
+
+
 }
