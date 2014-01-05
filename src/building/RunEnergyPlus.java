@@ -12,6 +12,8 @@ public class RunEnergyPlus
 		{
 			CommandLine cmdLine = new CommandLine("runenergyplus");
 			cmdLine.addArgument(idf.getName());
+
+			// This should be a user input file//
 			cmdLine.addArgument("USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw");
 
 			DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();

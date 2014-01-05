@@ -102,6 +102,15 @@
 			<classpath refid="run.classpath" />
         </java>
 	</target>
+
+	<!-- RUNNING TASK - "ant slave" -->
+	<target name="slave" depends="compile">
+		<java fork="true" classname="ec.eval.Slave" maxmemory="1024m">
+			<arg line="${args}"/>
+			<classpath refid="run.classpath" />
+        </java>
+	</target>
+	
 	
 	<!-- RUNNING TASK - "ant runeplus" -->
 	<target name="runeplus" depends="compile">
