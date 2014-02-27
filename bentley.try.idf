@@ -1,0 +1,17 @@
+Construction,
+  Gable_Wall,              !- Name
+  Std PW05;                !- Outside Layer
+ 
+ComponentCost:LineItem,
+  Gable Wall,              !- Name
+  ,                        !- Type
+  Construction,            !- Line Item Type
+  Gable_Wall,              !- Item Name
+  ,                        !- Object End Use Key
+  ,                        !- Cost per Each {$}
+  1,                       !- Cost per Area {$/m2}
+  ,                        !- Cost per Unit of Output Capacity {$/kW}
+  ,                        !- Cost per Unit of Output Capacity per COP {$/kW}
+  ,                        !- Cost per Volume {$/m3}
+  ,                        !- Cost per Volume Rate {$/(m3/s)}
+  ;                        !- Cost per Energy per Temperature Difference {$/(W/K)}
