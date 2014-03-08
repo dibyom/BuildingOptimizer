@@ -34,9 +34,9 @@ public class Building extends Problem implements SimpleProblemForm {
      
     try
     {
-      //File idf = IDFHelper.modifyIDF(genome);
-      //RunEnergyPlus.execute(idf);
-      //File file = RunEnergyPlus.execute(idf);
+      File idf = IDFHelper.modifyIDF(genome);
+      RunEnergyPlus.execute(idf);
+      RunEnergyPlus.execute(idf);
     }
     catch(IOException e)
     {
