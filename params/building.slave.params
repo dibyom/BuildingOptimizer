@@ -22,7 +22,7 @@ eval.stat.num-children = 0
 
 # The slave needs to know where the Master is.  You need to 
 # change this.
-eval.master.host = 127.0.0.1
+eval.master.host = 10.240.13.172
 
 # Return individuals instead of just the fitness
 eval.return-inds = true

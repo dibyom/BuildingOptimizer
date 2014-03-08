@@ -23,7 +23,7 @@ eval.masterproblem.debug-info = true
 # take it -- it'll have to sit and wait, which isn't particularly
 # efficient.  At the very least, it's probably helpful to have 2
 # or 3 jobs in the queue.
-eval.masterproblem.max-jobs-per-slave = 3
+eval.masterproblem.max-jobs-per-slave = 2
 
 
 # How large should our job be?  If you're doing ordinary
