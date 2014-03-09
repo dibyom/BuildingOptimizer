@@ -48,13 +48,41 @@ public class IDFHelper
 
 				while ((line = br.readLine()) != null) 
 				{
-					if (line.contains("!- North Axis"))
+						if (line.contains("Construction,"))
 					{	
-						line = line.replace(line, "\t"+angle+",\t!- North Axis");
-						System.out.println(line);
-					}
+						StringBuilder lineBuilder = new StringBuilder("Construction,");
+						String nextLine = br.readLine();
+						lineBuilder.append("\n" + nextLine + "\n");
+						if(nextLine.toLowerCase().contains("wall"))
+						{
+							String currentLine = null;
+							do{
+								currentLine = br.readLine();
+								if(currentLine.contains("!- Layer 3"))
+								{
+									if(currentLine.contains(";"))
+									{
+										currentLine = currentLine.replace(currentLine, "\tIN46;\t\t\t!- Layer 3");	
+									}
+									else
+									{
+										currentLine = currentLine.replace(currentLine, "\tIN46,\t\t\t!- Layer 3");		
+									}
+									
+									System.out.println(currentLine);
+								}
+								lineBuilder.append(currentLine);
+								lineBuilder.append("\n");
 
-					bw.write(line+"\n");
+							}while(!currentLine.contains(";"));
+						}
+						bw.write(lineBuilder.toString());
+					}
+					else
+					{
+						bw.write(line+"\n");
+					}
+					
 				}
 			}
 			finally {
