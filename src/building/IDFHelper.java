@@ -1,3 +1,4 @@
+
 package building;
 
 import java.io.BufferedReader;
@@ -10,20 +11,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.FileOutputStream;
-
+import java.nio.file.*;
+import java.nio.charset.Charset;
+import java.nio.ByteBuffer;
 import au.com.bytecode.opencsv.*;
 
 import java.util.List;
 
 public class IDFHelper
 {
+	public static final String[] insulation_materials = {"Material1", "Material2", "Material3", "Material4"};
 	public static void main(String argv[])
 	{
 		double[] genome = {90.000, 60.000};
 		//modifyIDF(genome);
 		parseBuildingCSV();
 	}
-	
 	/**
 	* @param genome an array representing the genome of the building
 	* @return the modified IDF File
@@ -48,7 +51,11 @@ public class IDFHelper
 
 				while ((line = br.readLine()) != null) 
 				{
-						if (line.contains("Construction,"))
+					//If we reach HVAC templates, break out of the loop. They will be appended later
+					if(line.contains("!- Begin HVAC Zones and System")) break;
+
+					//Otherwise, proceed with replacing wall insulation 
+					if (line.contains("Construction,"))
 					{	
 						StringBuilder lineBuilder = new StringBuilder("Construction,");
 						String nextLine = br.readLine();
@@ -56,10 +63,13 @@ public class IDFHelper
 						if(nextLine.toLowerCase().contains("wall"))
 						{
 							String currentLine = null;
+							String insulation_material = "\t" + insulation_materials[(int) genome[0]] 
+															+ ";\t\t\t!- Layer 3"; // Assuming genome[0] is always correct
 							do{
 								currentLine = br.readLine();
 								if(currentLine.contains("!- Layer 3"))
 								{
+									
 									if(currentLine.contains(";"))
 									{
 										currentLine = currentLine.replace(currentLine, "\tIN46;\t\t\t!- Layer 3");	
@@ -77,6 +87,11 @@ public class IDFHelper
 							}while(!currentLine.contains(";"));
 						}
 						bw.write(lineBuilder.toString());
+					}
+					// Or and window glazing.
+					else if (line.contains(""))
+					{
+						
 					}
 					else
 					{
@@ -104,10 +119,35 @@ public class IDFHelper
 		File newFile = new File(tmpFileName);
 		newFile.renameTo(oldFile); 
 
+		// Second pass - HVAC system and Set points
+		// Read the right file using genome[2] and read it into a string
+		// Append the string to the file
+		try
+		{
+			String hvacType = "hvac" + genome[2];
+    		FileWriter fw = new FileWriter(oldFileName,true); //the true will append the new data
+    		fw.write(readFile(hvacType,Charset.defaultCharset()));//appends the string to the file
+    		fw.close();
+    	}
+    	catch(IOException ioe)
+    	{
+    		System.err.println("IOException: " + ioe.getMessage());
+    	}
+
 		System.out.println(newFile.getName() + oldFile.getName());
 		return oldFile;
 	}
 
+	/**
+	* @param path path to the file to be read
+	* @param encoding Charset encoding usually set to default.
+	* @return the file in a String
+	*/
+	static String readFile(String path, Charset encoding) throws IOException 
+    {
+    	byte[] encoded = Files.readAllBytes(Paths.get(path));
+    	return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+    }
 	/**
 	* Parse the building.csv file return the columns
 	* 
