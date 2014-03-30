@@ -14,52 +14,43 @@ public class Building extends Problem implements SimpleProblemForm {
 	public void evaluate(final EvolutionState state, final Individual ind, final int subpopulation, final int threadnum)
 	{
 		
-    //Ensure that the individual is of right type
-    if( !( ind instanceof DoubleVectorIndividual ) )
-      state.output.fatal( "The individuals for this problem should be DoubleVectorIndividuals." );
+	//Ensure that the individual is of right type
+	if( !( ind instanceof DoubleVectorIndividual ) )
+	  state.output.fatal( "The individuals for this problem should be DoubleVectorIndividuals." );
 
-    float[] objectives = ((MultiObjectiveFitness)ind.fitness).getObjectives();
-    // Copy of ind
-    DoubleVectorIndividual temp = (DoubleVectorIndividual)ind;
-    double[] genome = temp.genome;
+	float[] objectives = ((MultiObjectiveFitness)ind.fitness).getObjectives();
+	// Copy of ind
+	DoubleVectorIndividual temp = (DoubleVectorIndividual)ind;
+	double[] genome = temp.genome;
 
-    // Ensure the number of decision variables is 4
-    int numDecisionVars = genome.length; 
-    if(numDecisionVars!=1) throw new RuntimeException("Building needs exactly 1 decision variables (genes).");
+	// Ensure the number of decision variables is 4
+	int numDecisionVars = genome.length; 
+	if(numDecisionVars!=1) throw new RuntimeException("Building needs exactly 1 decision variables (genes).");
 
-    
-    // * Create a modified IDF with the genomes and run E+ on the modified file.
-    // * @TODO change the method name to something more relevant
-    // * @TODO Have the execute return the output file.
-     
-    try
-    {
-      File idf = IDFHelper.modifyIDF(genome);
-      RunEnergyPlus.execute(idf);
-      RunEnergyPlus.execute(idf);
-    }
-    catch(IOException e)
-    {
-      e.printStackTrace();
-    }
+	
+	/** 
+	* Create a modified IDF with the genomes and run E+ on the modified file.
+	* @TODO Have the execute return the output file.
+	*/
+	IDFHelper idfHelper = new IDFHelper(); 
+	File idf = null;
+	try
+	{
+		idf = idfHelper.modifyIDF(genome);
+		int exitValue = RunEnergyPlus.execute(idf);
+	}
+	catch(IOException e)
+	{
+	  	e.printStackTrace();
+	}
 
-    // Get cost and energy usage values from the building. 
-    String[] lastRow = IDFHelper.parseBuildingCSV();
-    double electricity = Double.parseDouble(lastRow[1]);
-    double natural_gas = Double.parseDouble(lastRow[16]);
-    double energy = electricity + natural_gas;
-    double cost = 1 * electricity + 0.7 * natural_gas;
+	// Get cost and energy usage values from the building. 
+  	ObjectiveCalculator objectiveCalculator = new ObjectiveCalculator(idf.getName(), genome);
+	//Set the objectives 
+	objectives[0] = (float) objectiveCalculator.calculateEnergy(); 
+	objectives[1] = (float) objectiveCalculator.calculateCost();
 
-    //Set the objectives 
-    objectives[0] = (float) energy; 
-    objectives[1] = (float) cost;
-
-    ((MultiObjectiveFitness)ind.fitness).setObjectives(state, objectives);
-    ind.evaluated = true;
-  }
-
-  public static void compute_costs()
-  {
-
+	((MultiObjectiveFitness)ind.fitness).setObjectives(state, objectives);
+	ind.evaluated = true;
   }
 }

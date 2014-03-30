@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class RunEnergyPlus
 {
-	public static void execute(File idf) throws java.io.IOException
+	public static int execute(File idf) throws java.io.IOException
 	{
 		try
 		{
@@ -18,16 +18,17 @@ public class RunEnergyPlus
 
 			DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
-		//ExecuteWatchdog watchdog = new ExecuteWatchdog(600*1000);
+			//ExecuteWatchdog watchdog = new ExecuteWatchdog(600*1000);
 			Executor executor = new DefaultExecutor();
 			executor.setExitValue(1);
-		//executor.setWatchdog(watchdog);
+			//executor.setWatchdog(watchdog);
 			executor.execute(cmdLine, resultHandler);
 
-		// some time later the result handler callback was invoked so we
-		// can safely request the exit value
+			// some time later the result handler callback was invoked so we
+			// can safely request the exit value
 			resultHandler.waitFor();
 			int exitValue = resultHandler.getExitValue();
+			return exitValue;
 		}
 		catch(IOException e)
 		{
@@ -38,5 +39,8 @@ public class RunEnergyPlus
 		{
 			e.printStackTrace();	
 		}
+
+		//Something went wrong
+		return -1;
 	}
 }

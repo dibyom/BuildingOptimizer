@@ -1,4 +1,3 @@
-
 package building;
 
 import java.io.BufferedReader;
@@ -14,28 +13,37 @@ import java.io.FileOutputStream;
 import java.nio.file.*;
 import java.nio.charset.Charset;
 import java.nio.ByteBuffer;
-import au.com.bytecode.opencsv.*;
 
 import java.util.List;
 
 public class IDFHelper
 {
 	public static final String[] insulation_materials = {"Material1", "Material2", "Material3", "Material4"};
+	
+	//Will be moved to Materials Class or to a db.
+	//public static final String[] glazing_materials = {CLEAR 2.5MM,CLEAR 3MM,CLEAR 6MM,CLEAR 12MM,BRONZE 3MM,BRONZE 6MM,BRONZE 10MM,GREY 3MM,GREY 6MM,GREY 12MM,GREEN 3MM,GREEN 6MM,LOW IRON 2.5MM,LOW IRON 3MM,LOW IRON 4MM,LOW IRON 5MM,BLUE 6MM,REF A CLEAR LO 6MM,REF A CLEAR MID 6MM,REF A CLEAR HI 6MM,REF A TINT LO 6MM,REF A TINT MID 6MM,REF A TINT HI 6MM,REF B CLEAR LO 6MM,REF B CLEAR HI 6MM,REF B TINT LO 6MM,REF B TINT MID 6MM,REF B TINT HI 6MM,REF C CLEAR LO 6MM,REF C CLEAR MID 6MM,REF C CLEAR HI 6MM,REF C TINT LO 6MM,REF C TINT MID 6MM,REF C TINT HI 6MM,REF D CLEAR 6MM,REF D TINT 6MM,PYR A CLEAR 3MM,PYR B CLEAR 3MM,PYR B CLEAR 6MM,LoE CLEAR 3MM,LoE CLEAR 3MM Rev,LoE CLEAR 6MM,LoE CLEAR 6MM Rev,LoE TINT 6MM,LoE SPEC SEL CLEAR 3MM,  LoE SPEC SEL CLEAR 6MM,  LoE SPEC SEL CLEAR 6MM Rev,  LoE SPEC SEL TINT 6MM,   COATED POLY-88,COATED POLY-77,COATED POLY-66,COATED POLY-55,COATED POLY-44,COATED POLY-33,ECABS-1 BLEACHED 6MM,ECABS-1 COLORED 6MM,ECREF-1 BLEACHED 6MM,ECREF-1 COLORED 6MM,ECABS-2 BLEACHED 6MM,ECABS-2 COLORED 6MM,ECREF-2 BLEACHED 6MM,ECREF-2 COLORED 6MM};
+
+	public static final String HEATING_SET_POINT_NAME = "Htg-SetP-Sch";
+
+	public static final String COOLING_SET_POINT_NAME = "Clg-SetP-Sch";
+
+	
 	public static void main(String argv[])
 	{
 		double[] genome = {90.000, 60.000};
 		//modifyIDF(genome);
-		parseBuildingCSV();
+		//parseBuildingCSV();
 	}
+	
 	/**
+	* Read through the IDF file and make necessary changes 
 	* @param genome an array representing the genome of the building
 	* @return the modified IDF File
+	* @TODO pass in file as a param 
 	*/
-	public static File modifyIDF(double[] genome)
+	public File modifyIDF(double[] genome)
 	{
-		int numDecisionVars = genome.length;
-		double angle = genome[0];
-
+		
 		String oldFileName = "bentley.idf";
 		String tmpFileName = "bentley.idf.temp";
 
@@ -54,50 +62,62 @@ public class IDFHelper
 					//If we reach HVAC templates, break out of the loop. They will be appended later
 					if(line.contains("!- Begin HVAC Zones and System")) break;
 
-					//Otherwise, proceed with replacing wall insulation 
+					//See if it is a Construction E+ object
 					if (line.contains("Construction,"))
 					{	
+						//Modify the class as needed and store it as a string.
 						StringBuilder lineBuilder = new StringBuilder("Construction,");
+						
+						//Read and write the next line
 						String nextLine = br.readLine();
 						lineBuilder.append("\n" + nextLine + "\n");
-						if(nextLine.toLowerCase().contains("wall"))
-						{
-							String currentLine = null;
-							String insulation_material = "\t" + insulation_materials[(int) genome[0]] 
-															+ ";\t\t\t!- Layer 3"; // Assuming genome[0] is always correct
-							do{
-								currentLine = br.readLine();
-								if(currentLine.contains("!- Layer 3"))
-								{
-									
-									if(currentLine.contains(";"))
-									{
-										currentLine = currentLine.replace(currentLine, "\tIN46;\t\t\t!- Layer 3");	
-									}
-									else
-									{
-										currentLine = currentLine.replace(currentLine, "\tIN46,\t\t\t!- Layer 3");		
-									}
-									
-									System.out.println(currentLine);
-								}
-								lineBuilder.append(currentLine);
-								lineBuilder.append("\n");
+						
+						//If the line corresponds to a wall, change the insulation	
+						// if(nextLine.toLowerCase().contains("wall"))
+						// {
+						// 	String modifiedWall = changeInsulation(br, (int) genome[0]);
+						// 	lineBuilder.append(modifiedWall);
+						// }
 
-							}while(!currentLine.contains(";"));
+						//If it corresponds to a window, change the glazing
+						if(nextLine.contains("!- Name Window"))
+						{	
+							String modifiedWindow = changeGlazing(br, (int) genome[1]);
+							lineBuilder.append(modifiedWindow);
 						}
+
+						//Finally, write the string to the temp file
 						bw.write(lineBuilder.toString());
 					}
-					// Or and window glazing.
-					else if (line.contains(""))
-					{
-						
+					
+					//Check if this is either a heating or a cooling point schedule
+					else if (line.contains("Schedule:Compact,"))
+					{	
+						bw.write(line + "\n");
+						String nextLine = br.readLine();
+						if(nextLine.contains(HEATING_SET_POINT_NAME + ",")) 
+						{
+							removeObject(br);
+							String schedule = generateSchedule(HEATING_SET_POINT_NAME, genome[3]);
+							bw.write(schedule);	
+						}
+						else if (nextLine.contains(COOLING_SET_POINT_NAME+","))
+						{
+							removeObject(br);
+							String schedule = generateSchedule(COOLING_SET_POINT_NAME, genome[4]);
+							bw.write(schedule);
+						}
+						else
+						{
+							bw.write(nextLine+"\n");
+						}
 					}
+
+					//Otherwise simply write the line back to the file
 					else
 					{
 						bw.write(line+"\n");
 					}
-					
 				}
 			}
 			finally {
@@ -111,31 +131,67 @@ public class IDFHelper
 			e.printStackTrace();
 		} 
 		
-      // Once everything is complete, delete old file..
+      	// Once everything is complete, delete old file..
 		File oldFile = new File(oldFileName);
 		oldFile.delete();
 
-      // And rename tmp file's name to old file name
+      	// And rename tmp file's name to old file name
 		File newFile = new File(tmpFileName);
 		newFile.renameTo(oldFile); 
 
-		// Second pass - HVAC system and Set points
-		// Read the right file using genome[2] and read it into a string
 		// Append the string to the file
-		try
-		{
-			String hvacType = "hvac" + genome[2];
-    		FileWriter fw = new FileWriter(oldFileName,true); //the true will append the new data
-    		fw.write(readFile(hvacType,Charset.defaultCharset()));//appends the string to the file
-    		fw.close();
-    	}
-    	catch(IOException ioe)
-    	{
-    		System.err.println("IOException: " + ioe.getMessage());
-    	}
-
-		System.out.println(newFile.getName() + oldFile.getName());
+		appendHVACSystem(genome[2], oldFileName);
+		
 		return oldFile;
+	}
+
+	/**
+	* @param br BufferedReader open with file
+	* @param insulationMaterial index of insulation material
+	* @return a string containing the changed insulation material
+	*/
+	public String changeInsulation(BufferedReader br, int insulationMaterial) throws IOException
+	{
+		String currentLine = null;
+		String insulation_material = "\t" + insulation_materials[insulationMaterial] 
+		+ ";\t\t\t!- Layer 3";
+		StringBuilder lineBuilder = new StringBuilder();
+		do{
+			currentLine = br.readLine();
+			if(currentLine.contains("!- Layer 3"))
+			{	
+				//@TODO
+				if(currentLine.contains(";"))
+				currentLine = currentLine.replace(currentLine, "\tIN46;\t\t\t!- Layer 3");	
+				else
+					currentLine = currentLine.replace(currentLine, "\tIN46,\t\t\t!- Layer 3");		
+			}
+			lineBuilder.append(currentLine);
+			lineBuilder.append("\n");
+		}while(!currentLine.contains(";"));
+
+		return lineBuilder.toString();
+	}
+
+	/**
+	* @param br BufferedReader open with file
+	* @param insulationMaterial index of the glazing material
+	* @return a string containing the changed glazing material
+	*/
+	public String changeGlazing(BufferedReader br, int glazingMaterial) throws IOException
+	{
+		StringBuilder windowBuilder = new StringBuilder();
+		String layer = br.readLine(); //Discard the previous first layer
+		layer = Materials.glazing_materials[glazingMaterial]; //Add First layer
+		windowBuilder.append(layer);
+		windowBuilder.append("\n");
+		windowBuilder.append(br.readLine()); //Add second layer
+		windowBuilder.append("\n");
+		windowBuilder.append(layer); //Add third layer
+		windowBuilder.append("\n");
+		layer = br.readLine(); //Discard the previous third layer
+
+		return windowBuilder.toString();
 	}
 
 	/**
@@ -143,38 +199,62 @@ public class IDFHelper
 	* @param encoding Charset encoding usually set to default.
 	* @return the file in a String
 	*/
-	static String readFile(String path, Charset encoding) throws IOException 
-    {
-    	byte[] encoded = Files.readAllBytes(Paths.get(path));
-    	return encoding.decode(ByteBuffer.wrap(encoded)).toString();
-    }
-	/**
-	* Parse the building.csv file return the columns
-	* 
-	*/
-	public static String[] parseBuildingCSV()
+	public String readFile(String path, Charset encoding) throws IOException 
 	{
-		String[] lastRow = null;
+		byte[] encoded = Files.readAllBytes(Paths.get(path));
+		return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+	}
+	
+	/**
+	* @param hvacSystemType the index of the HVACSystemType
+	* @param fileName the file where the HVACTemplate will be appended
+	*/
+	public void appendHVACSystem(double hvacSystemType, String fileName)
+	{
 		try
 		{
-			CSVReader reader = new CSVReader(new FileReader("Output/bentley.csv"), ',', '\"', 1);
-			String [] nextLine;
-			List csvRows = reader.readAll();
-			lastRow = (String[]) csvRows.get(csvRows.size()-1);
-			double electricity = Double.parseDouble(lastRow[1]);
-          	double natural_gas = Double.parseDouble(lastRow[16]);
+			String hvacType = "hvac" + (int) hvacSystemType;
+    		FileWriter fw = new FileWriter(fileName,true); //the true will append the new data
+    		fw.write(readFile(hvacType,Charset.defaultCharset()));//appends the string to the file
+    		fw.close();
+    	}
+    	catch(IOException ioe)
+    	{
+    		System.err.println("IOException: " + ioe.getMessage());
+    	}
+    }
 
-          	System.out.println("Total Electricity in Joules : " + lastRow[1] +"\t" +electricity);
-          	System.out.println("Total Natural Gas in Joules : " + lastRow[16] +"\t"+ natural_gas);
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		return lastRow;
-		
+    /**
+	* Generate an E+ IDF temperature schedule. 
+	* Used for heating and cooling setpoints
+	* @TODO make this method have different temps for times of day.
+	* @param name of the scedule object
+	* @param temp temperature for the schedule
+	* @return the IDF schedule object as a string
+	*/
+	public String generateSchedule(String name, double temp)
+	{
+		StringBuilder lineBuilder = new StringBuilder("\t"+name+",\t\t\t!-Name\n");
+		lineBuilder.append("\tTemperature,\t\t\t!- Schedule Type Limits Name\n");
+		lineBuilder.append("\tThrough: 12/31,\t\t\t!- Field 1\n");
+		lineBuilder.append("\tFor: AllDays,\t\t\t!- Field 2\n");
+		lineBuilder.append("\tUntil: 24:00,"+ temp +";\t\t!- Field 7\n");	
+		return lineBuilder.toString();
 	}
 
-
+	/**
+	* Simple Utility method to remove an IDF class.
+	* Assume, BufferedReader object is on first line of the object.
+	* Then, this will move the reader until the next semi-colon is encountered.
+	* @param br Buffered Reader Object that has the file open
+	*/
+	public void removeObject(BufferedReader br) throws IOException
+	{
+		String line;
+		do
+		{
+			line = br.readLine();
+			System.out.println(line);
+		}while(!line.contains(";"));
+	}
 }
