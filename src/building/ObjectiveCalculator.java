@@ -54,8 +54,8 @@ public class ObjectiveCalculator{
 
 	public double calculateInstallationCost()
 	{
-		
-		double insulationCost = BuildingProperties.NO_WALLS * BuildingProperties.WALL_AREA * Materials.wall_materials_cost[insulationMaterial];
+		double insulationCost = 0;
+		//double insulationCost = BuildingProperties.NO_WALLS * BuildingProperties.WALL_AREA * Materials.wall_materials_cost[insulationMaterial];
 		double glazingCost = BuildingProperties.NO_WINDOWS * BuildingProperties.WINDOW_AREA * Materials.glazing_materials_cost[glazingMaterial];
 		double hvacSystemCost = Materials.hvac_systems_cost[hvacSystem];
 
@@ -74,19 +74,20 @@ public class ObjectiveCalculator{
 
 	/**
 	* Parse the building.csv file return the columns
+	* @TODO Fix fileName to variable
 	*/
 	public void parseBuildingCSV()
 	{
 		String[] lastRow = null;
 		try
 		{
-			CSVReader reader = new CSVReader(new FileReader("Output/"+buildingFileName+".csv"), ',', '\"', 1);
+			//String file = (buildingFileName.split("."))[0];
+			CSVReader reader = new CSVReader(new FileReader("Output/building_base.csv"), ',', '\"', 1);
 			List csvRows = reader.readAll();
 			lastRow = (String[]) csvRows.get(csvRows.size()-1);
 			this.electricity = Float.parseFloat(lastRow[1]);
-			this.naturalGas = Float.parseFloat(lastRow[16]);
-			System.out.println(electricity);
-			System.out.println(naturalGas);
+			this.naturalGas = Float.parseFloat(lastRow[3]) ;
+			
 		}
 		catch(IOException e)
 		{

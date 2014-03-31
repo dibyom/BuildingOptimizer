@@ -1,4 +1,4 @@
-!  HVACTemplate:Thermostat,
+  HVACTemplate:Thermostat,
     All Zones,               !- Name
     Htg-SetP-Sch,            !- Heating Setpoint Schedule Name
     ,                        !- Constant Heating Setpoint {C}

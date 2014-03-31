@@ -33,6 +33,8 @@ public class IDFHelper
 		double[] genome = {90.000, 60.000};
 		//modifyIDF(genome);
 		//parseBuildingCSV();
+		IDFHelper i = new IDFHelper();
+		i.appendHVACSystem(1, "building_base.idf");
 	}
 	
 	/**
@@ -44,7 +46,7 @@ public class IDFHelper
 	public File modifyIDF(double[] genome)
 	{
 		
-		String oldFileName = "bentley.idf";
+		String oldFileName = "building_base.idf";
 		String tmpFileName = "bentley.idf.temp";
 
 		BufferedReader br = null;
@@ -60,7 +62,10 @@ public class IDFHelper
 				while ((line = br.readLine()) != null) 
 				{
 					//If we reach HVAC templates, break out of the loop. They will be appended later
-					if(line.contains("!- Begin HVAC Zones and System")) break;
+					if(line.contains("!- Begin HVAC Zones and System")) {
+						bw.write(line + "\n");
+						break;
+					}
 
 					//See if it is a Construction E+ object
 					if (line.contains("Construction,"))
@@ -183,11 +188,15 @@ public class IDFHelper
 		StringBuilder windowBuilder = new StringBuilder();
 		String layer = br.readLine(); //Discard the previous first layer
 		layer = Materials.glazing_materials[glazingMaterial]; //Add First layer
+		windowBuilder.append("\t");
 		windowBuilder.append(layer);
+		windowBuilder.append(",\t\t\t!- Layer1");
 		windowBuilder.append("\n");
 		windowBuilder.append(br.readLine()); //Add second layer
 		windowBuilder.append("\n");
+		windowBuilder.append("\t");
 		windowBuilder.append(layer); //Add third layer
+		windowBuilder.append(";\t\t\t!- Layer3");
 		windowBuilder.append("\n");
 		layer = br.readLine(); //Discard the previous third layer
 
@@ -213,7 +222,7 @@ public class IDFHelper
 	{
 		try
 		{
-			String hvacType = "hvac" + (int) hvacSystemType;
+			String hvacType = "idf_components/hvacSystems/hvac" + (int) hvacSystemType;
     		FileWriter fw = new FileWriter(fileName,true); //the true will append the new data
     		fw.write(readFile(hvacType,Charset.defaultCharset()));//appends the string to the file
     		fw.close();
@@ -254,7 +263,6 @@ public class IDFHelper
 		do
 		{
 			line = br.readLine();
-			System.out.println(line);
 		}while(!line.contains(";"));
 	}
 }
