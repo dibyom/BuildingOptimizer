@@ -22,8 +22,8 @@ pop.subpop.0.species.min-gene.1 = 55.0
 pop.subpop.0.species.max-gene.1 = 100.0
 
 #HVAC System type
-pop.subpop.0.species.min-gene.2 = 55.0
-pop.subpop.0.species.max-gene.2 = 100.0
+pop.subpop.0.species.min-gene.2 = 0.0
+pop.subpop.0.species.max-gene.2 = 10.0
 
 
 #Heating Set Point
