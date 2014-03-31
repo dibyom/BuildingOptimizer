@@ -2,7 +2,7 @@ parent.0 = nsga2.params
 
 seed.0 = time
 eval.problem = building.Building
-generations = 3
+generations = 50
 
 # NSGA 2
 pop.subpop.0.species.pipe		     		= ec.vector.breed.VectorMutationPipeline
@@ -11,7 +11,7 @@ pop.subpop.0.species.pipe.source.0.source.0 = ec.select.TournamentSelection
 pop.subpop.0.species.pipe.source.0.source.1 = same
 select.tournament.size 						= 20
 
-pop.subpop.0.size =	5
+pop.subpop.0.size =	50
 
 pop.subpop.0.species = ec.vector.FloatVectorSpecies
 pop.subpop.0.species.ind = ec.vector.DoubleVectorIndividual

@@ -100,55 +100,11 @@
 ! Utility Tariffs:                None
 
   Version,8.0;
-  Output:Meter,Electricity:Facility,RunPeriod;
-
-Output:Meter,ElectricityPurchased:Facility,RunPeriod;
-
-Output:Meter,ElectricityProduced:Facility,RunPeriod;
-
-Output:Meter,ElectricitySurplusSold:Facility,RunPeriod;
+Output:Meter,Electricity:Facility,RunPeriod;
 
 Output:Meter,ElectricityNet:Facility,RunPeriod;
 
-Output:Meter,Source:Facility,RunPeriod;
-
-Output:Meter,CO2:Facility,RunPeriod;
-
-Output:Meter,Electricity:Building,RunPeriod;
-
-Output:Meter,Electricity:Plant,RunPeriod;
-
-Output:Meter,Electricity:HVAC,RunPeriod;
-
-Output:Meter,InteriorLights:Electricity,RunPeriod;
-
-Output:Meter,InteriorEquipment:Electricity,RunPeriod;
-
-Output:Meter,Refrigeration:Electricity,RunPeriod;
-
-Output:Meter,Fans:Electricity,RunPeriod;
-
-Output:Meter,Zone Exhaust Fans:Fans:Electricity,RunPeriod;
-
-Output:Meter,ExteriorLights:Electricity,RunPeriod;
-
-Output:Meter,Cooling:Electricity,RunPeriod;
-
-Output:Meter,Pumps:Electricity,RunPeriod;
-
-Output:Meter,Heating:Electricity,RunPeriod;
-
 Output:Meter,Gas:Facility,RunPeriod;
-
-Output:Meter,InteriorEquipment:Gas,RunPeriod;
-
-Output:Meter,Heating:Gas,RunPeriod;
-
-Output:Meter,Gas:Plant,RunPeriod;
-
-Output:Meter,Water Heater:WaterSystems:Gas,RunPeriod;
-
-Output:Meter,Water:Facility,RunPeriod;
 
   Building,
     Fan Coil with DOAS,      !- Name
@@ -434,29 +390,29 @@ RunPeriod,
     AL23,                    !- Name
     0.1530000;               !- Thermal Resistance {m2-K/W}
 
-  Construction,
+Construction,
     ROOF-1,                  !- Name
     RG01,                    !- Outside Layer
     BR01,                    !- Layer 2
     IN46,                    !- Layer 3
     WD01;                    !- Layer 4
 
-  Construction,
+Construction,
     WALL-1,                  !- Name
     WD01,                    !- Outside Layer
     PW03,                    !- Layer 2
     IN02,                    !- Layer 3
     GP01;                    !- Layer 4
 
-  Construction,
+Construction,
     CLNG-1,                  !- Name
     MAT-CLNG-1;              !- Outside Layer
 
-  Construction,
+Construction,
     FLOOR-SLAB-1,            !- Name
     CC03;                    !- Outside Layer
 
-  Construction,
+Construction,
     INT-WALL-1,              !- Name
     GP02,                    !- Outside Layer
     AL21,                    !- Layer 2
@@ -476,78 +432,319 @@ RunPeriod,
     ARGON 13MM,              !- Name
     Argon,                   !- Gas Type
     0.0127;                  !- Thickness {m}
+ ! =====Added WindowMaterial:Glazing
+  WindowMaterial:Glazing,
+    CLEAR 2.5MM,             !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .0025,                   !- Thickness {m}
+    .850,                    !- Solar Transmittance at Normal Incidence
+    .075,                    !- Front Side Solar Reflectance at Normal Incidence
+    .075,                    !- Back Side Solar Reflectance at Normal Incidence
+    .901,                    !- Visible Transmittance at Normal Incidence
+    .081,                    !- Front Side Visible Reflectance at Normal Incidence
+    .081,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
 
   WindowMaterial:Glazing,
     CLEAR 3MM,               !- Name
     SpectralAverage,         !- Optical Data Type
     ,                        !- Window Glass Spectral Data Set Name
-    0.003,                   !- Thickness {m}
-    0.837,                   !- Solar Transmittance at Normal Incidence
-    0.075,                   !- Front Side Solar Reflectance at Normal Incidence
-    0.075,                   !- Back Side Solar Reflectance at Normal Incidence
-    0.898,                   !- Visible Transmittance at Normal Incidence
-    0.081,                   !- Front Side Visible Reflectance at Normal Incidence
-    0.081,                   !- Back Side Visible Reflectance at Normal Incidence
-    0.0,                     !- Infrared Transmittance at Normal Incidence
-    0.84,                    !- Front Side Infrared Hemispherical Emissivity
-    0.84,                    !- Back Side Infrared Hemispherical Emissivity
-    0.9;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    GREY 3MM,                !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    0.003,                   !- Thickness {m}
-    0.626,                   !- Solar Transmittance at Normal Incidence
-    0.061,                   !- Front Side Solar Reflectance at Normal Incidence
-    0.061,                   !- Back Side Solar Reflectance at Normal Incidence
-    0.611,                   !- Visible Transmittance at Normal Incidence
-    0.061,                   !- Front Side Visible Reflectance at Normal Incidence
-    0.061,                   !- Back Side Visible Reflectance at Normal Incidence
-    0.0,                     !- Infrared Transmittance at Normal Incidence
-    0.84,                    !- Front Side Infrared Hemispherical Emissivity
-    0.84,                    !- Back Side Infrared Hemispherical Emissivity
-    0.9;                     !- Conductivity {W/m-K}
+    .003,                    !- Thickness {m}
+    .837,                    !- Solar Transmittance at Normal Incidence
+    .075,                    !- Front Side Solar Reflectance at Normal Incidence
+    .075,                    !- Back Side Solar Reflectance at Normal Incidence
+    .898,                    !- Visible Transmittance at Normal Incidence
+    .081,                    !- Front Side Visible Reflectance at Normal Incidence
+    .081,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
 
   WindowMaterial:Glazing,
     CLEAR 6MM,               !- Name
     SpectralAverage,         !- Optical Data Type
     ,                        !- Window Glass Spectral Data Set Name
-    0.006,                   !- Thickness {m}
-    0.775,                   !- Solar Transmittance at Normal Incidence
-    0.071,                   !- Front Side Solar Reflectance at Normal Incidence
-    0.071,                   !- Back Side Solar Reflectance at Normal Incidence
-    0.881,                   !- Visible Transmittance at Normal Incidence
-    0.080,                   !- Front Side Visible Reflectance at Normal Incidence
-    0.080,                   !- Back Side Visible Reflectance at Normal Incidence
-    0.0,                     !- Infrared Transmittance at Normal Incidence
-    0.84,                    !- Front Side Infrared Hemispherical Emissivity
-    0.84,                    !- Back Side Infrared Hemispherical Emissivity
-    0.9;                     !- Conductivity {W/m-K}
+    .006,                    !- Thickness {m}
+    .775,                    !- Solar Transmittance at Normal Incidence
+    .071,                    !- Front Side Solar Reflectance at Normal Incidence
+    .071,                    !- Back Side Solar Reflectance at Normal Incidence
+    .881,                    !- Visible Transmittance at Normal Incidence
+    .080,                    !- Front Side Visible Reflectance at Normal Incidence
+    .080,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    CLEAR 12MM,              !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .012,                    !- Thickness {m}
+    .653,                    !- Solar Transmittance at Normal Incidence
+    .064,                    !- Front Side Solar Reflectance at Normal Incidence
+    .064,                    !- Back Side Solar Reflectance at Normal Incidence
+    .841,                    !- Visible Transmittance at Normal Incidence
+    .077,                    !- Front Side Visible Reflectance at Normal Incidence
+    .077,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    BRONZE 3MM,              !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .003,                    !- Thickness {m}
+    .645,                    !- Solar Transmittance at Normal Incidence
+    .062,                    !- Front Side Solar Reflectance at Normal Incidence
+    .062,                    !- Back Side Solar Reflectance at Normal Incidence
+    .685,                    !- Visible Transmittance at Normal Incidence
+    .065,                    !- Front Side Visible Reflectance at Normal Incidence
+    .065,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    BRONZE 6MM,              !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .482,                    !- Solar Transmittance at Normal Incidence
+    .054,                    !- Front Side Solar Reflectance at Normal Incidence
+    .054,                    !- Back Side Solar Reflectance at Normal Incidence
+    .534,                    !- Visible Transmittance at Normal Incidence
+    .057,                    !- Front Side Visible Reflectance at Normal Incidence
+    .057,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    BRONZE 10MM,             !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .010,                    !- Thickness {m}
+    .326,                    !- Solar Transmittance at Normal Incidence
+    .048,                    !- Front Side Solar Reflectance at Normal Incidence
+    .048,                    !- Back Side Solar Reflectance at Normal Incidence
+    .379,                    !- Visible Transmittance at Normal Incidence
+    .050,                    !- Front Side Visible Reflectance at Normal Incidence
+    .050,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    GREY 3MM,                !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .003,                    !- Thickness {m}
+    .626,                    !- Solar Transmittance at Normal Incidence
+    .061,                    !- Front Side Solar Reflectance at Normal Incidence
+    .061,                    !- Back Side Solar Reflectance at Normal Incidence
+    .611,                    !- Visible Transmittance at Normal Incidence
+    .061,                    !- Front Side Visible Reflectance at Normal Incidence
+    .061,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    GREY 6MM,                !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .455,                    !- Solar Transmittance at Normal Incidence
+    .053,                    !- Front Side Solar Reflectance at Normal Incidence
+    .053,                    !- Back Side Solar Reflectance at Normal Incidence
+    .431,                    !- Visible Transmittance at Normal Incidence
+    .052,                    !- Front Side Visible Reflectance at Normal Incidence
+    .052,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    GREY 12MM,               !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .012,                    !- Thickness {m}
+    .217,                    !- Solar Transmittance at Normal Incidence
+    .044,                    !- Front Side Solar Reflectance at Normal Incidence
+    .044,                    !- Back Side Solar Reflectance at Normal Incidence
+    .187,                    !- Visible Transmittance at Normal Incidence
+    .045,                    !- Front Side Visible Reflectance at Normal Incidence
+    .045,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .84,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+    WindowMaterial:Glazing,
+    LoE CLEAR 3MM,           !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .003,                    !- Thickness {m}
+    .630,                    !- Solar Transmittance at Normal Incidence
+    .190,                    !- Front Side Solar Reflectance at Normal Incidence
+    .220,                    !- Back Side Solar Reflectance at Normal Incidence
+    .850,                    !- Visible Transmittance at Normal Incidence
+    .056,                    !- Front Side Visible Reflectance at Normal Incidence
+    .079,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .10,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
 
   WindowMaterial:Glazing,
     LoE CLEAR 6MM,           !- Name
     SpectralAverage,         !- Optical Data Type
     ,                        !- Window Glass Spectral Data Set Name
-    0.006,                   !- Thickness {m}
-    0.600,                   !- Solar Transmittance at Normal Incidence
-    0.170,                   !- Front Side Solar Reflectance at Normal Incidence
-    0.220,                   !- Back Side Solar Reflectance at Normal Incidence
-    0.840,                   !- Visible Transmittance at Normal Incidence
-    0.055,                   !- Front Side Visible Reflectance at Normal Incidence
-    0.078,                   !- Back Side Visible Reflectance at Normal Incidence
-    0.0,                     !- Infrared Transmittance at Normal Incidence
-    0.84,                    !- Front Side Infrared Hemispherical Emissivity
-    0.10,                    !- Back Side Infrared Hemispherical Emissivity
-    0.9;                     !- Conductivity {W/m-K}
+    .006,                    !- Thickness {m}
+    .600,                    !- Solar Transmittance at Normal Incidence
+    .170,                    !- Front Side Solar Reflectance at Normal Incidence
+    .220,                    !- Back Side Solar Reflectance at Normal Incidence
+    .840,                    !- Visible Transmittance at Normal Incidence
+    .055,                    !- Front Side Visible Reflectance at Normal Incidence
+    .078,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .10,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
 
-  Construction,
-    Dbl Clr 3mm/13mm Air,    !- Name
-    CLEAR 3MM,               !- Outside Layer
+  WindowMaterial:Glazing,
+    LoE TINT 6MM,            !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .360,                    !- Solar Transmittance at Normal Incidence
+    .093,                    !- Front Side Solar Reflectance at Normal Incidence
+    .200,                    !- Back Side Solar Reflectance at Normal Incidence
+    .500,                    !- Visible Transmittance at Normal Incidence
+    .035,                    !- Front Side Visible Reflectance at Normal Incidence
+    .054,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .10,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+    WindowMaterial:Glazing,
+    COATED POLY-88,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .656,                    !- Solar Transmittance at Normal Incidence
+    .249,                    !- Front Side Solar Reflectance at Normal Incidence
+    .227,                    !- Back Side Solar Reflectance at Normal Incidence
+    .868,                    !- Visible Transmittance at Normal Incidence
+    .064,                    !- Front Side Visible Reflectance at Normal Incidence
+    .060,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .136,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    COATED POLY-77,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .504,                    !- Solar Transmittance at Normal Incidence
+    .402,                    !- Front Side Solar Reflectance at Normal Incidence
+    .398,                    !- Back Side Solar Reflectance at Normal Incidence
+    .766,                    !- Visible Transmittance at Normal Incidence
+    .147,                    !- Front Side Visible Reflectance at Normal Incidence
+    .167,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .075,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    COATED POLY-66,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .403,                    !- Solar Transmittance at Normal Incidence
+    .514,                    !- Front Side Solar Reflectance at Normal Incidence
+    .515,                    !- Back Side Solar Reflectance at Normal Incidence
+    .658,                    !- Visible Transmittance at Normal Incidence
+    .256,                    !- Front Side Visible Reflectance at Normal Incidence
+    .279,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .057,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    COATED POLY-55,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .320,                    !- Solar Transmittance at Normal Incidence
+    .582,                    !- Front Side Solar Reflectance at Normal Incidence
+    .593,                    !- Back Side Solar Reflectance at Normal Incidence
+    .551,                    !- Visible Transmittance at Normal Incidence
+    .336,                    !- Front Side Visible Reflectance at Normal Incidence
+    .375,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .046,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    COATED POLY-44,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .245,                    !- Solar Transmittance at Normal Incidence
+    .626,                    !- Front Side Solar Reflectance at Normal Incidence
+    .641,                    !- Back Side Solar Reflectance at Normal Incidence
+    .439,                    !- Visible Transmittance at Normal Incidence
+    .397,                    !- Front Side Visible Reflectance at Normal Incidence
+    .453,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .037,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    COATED POLY-33,          !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .00051,                  !- Thickness {m}
+    .178,                    !- Solar Transmittance at Normal Incidence
+    .739,                    !- Front Side Solar Reflectance at Normal Incidence
+    .738,                    !- Back Side Solar Reflectance at Normal Incidence
+    .330,                    !- Visible Transmittance at Normal Incidence
+    .566,                    !- Front Side Visible Reflectance at Normal Incidence
+    .591,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .035,                    !- Front Side Infrared Hemispherical Emissivity
+    .720,                    !- Back Side Infrared Hemispherical Emissivity
+    .14;                     !- Conductivity {W/m-K}
+
+ ! ======Finish added Glazing materials
+Construction,
+    Dbl Clr 3mm/13mm Air,    !- Name Window
+	CLEAR 2.5MM,			!- Layer1
     AIR 13MM,                !- Layer 2
-    CLEAR 3MM;               !- Layer 3
+	CLEAR 2.5MM;			!- Layer3
 
-  Construction,
+Construction,
     Sgl Grey 3mm,            !- Name
     GREY 3MM;                !- Outside Layer
 
@@ -1717,37 +1914,20 @@ RunPeriod,
 ! For heating, recover 2 hrs early
 
   Schedule:Compact,
-    Htg-SetP-Sch,            !- Name
-    Temperature,             !- Schedule Type Limits Name
-    Through: 12/31,          !- Field 1
-    For: WeekDays CustomDay1 CustomDay2, !- Field 2
-    Until: 6:00,13.0,        !- Field 3
-    Until: 7:00,18.0,        !- Field 5
-    Until: 21:00,23.0,       !- Field 7
-    Until: 24:00,13.0,       !- Field 9
-    For: WeekEnds Holiday,   !- Field 11
-    Until: 24:00,13.0,       !- Field 12
-    For: SummerDesignDay,    !- Field 14
-    Until: 24:00,13.0,       !- Field 15
-    For: WinterDesignDay,    !- Field 17
-    Until: 24:00,23.0;       !- Field 18
+	Htg-SetP-Sch,			!-Name
+	Temperature,			!- Schedule Type Limits Name
+	Through: 12/31,			!- Field 1
+	For: AllDays,			!- Field 2
+	Until: 24:00,19.504407301218738;		!- Field 7
 
 ! For cooling, recover 1 hr early
 
   Schedule:Compact,
-    Clg-SetP-Sch,            !- Name
-    Temperature,             !- Schedule Type Limits Name
-    Through: 12/31,          !- Field 1
-    For: WeekDays CustomDay1 CustomDay2, !- Field 2
-    Until: 7:00,32.0,        !- Field 3
-    Until: 21:00,24.0,       !- Field 5
-    Until: 24:00,32.0,       !- Field 7
-    For: WeekEnds Holiday,   !- Field 9
-    Until: 24:00,32.0,       !- Field 10
-    For: SummerDesignDay,    !- Field 12
-    Until: 24:00,24.0,       !- Field 13
-    For: WinterDesignDay,    !- Field 15
-    Until: 24:00,32.0;       !- Field 16
+	Clg-SetP-Sch,			!-Name
+	Temperature,			!- Schedule Type Limits Name
+	Through: 12/31,			!- Field 1
+	For: AllDays,			!- Field 2
+	Until: 24:00,26.253517573859547;		!- Field 7
 
   Schedule:Compact,
     FanAvailSched,           !- Name
@@ -1768,8 +1948,9 @@ RunPeriod,
     1.2,                     !- Heating Sizing Factor
     1.2;                     !- Cooling Sizing Factor
   
-  !- Begin HVAC Zones and System
-    Schedule:Compact,
+!- Begin HVAC Zones and System
+! VAV system with chilled water and hot water loops.
+  Schedule:Compact,
     Min OA Sched,            !- Name
     Fraction,                !- Schedule Type Limits Name
     Through: 12/31,          !- Field 1
@@ -1783,34 +1964,35 @@ RunPeriod,
     Until: 24:00,1.0,        !- Field 13
     For: WinterDesignDay,    !- Field 15
     Until: 24:00,1.0;        !- Field 16
-
-     HVACTemplate:Thermostat,
+  HVACTemplate:Thermostat,
     All Zones,               !- Name
     Htg-SetP-Sch,            !- Heating Setpoint Schedule Name
     ,                        !- Constant Heating Setpoint {C}
     Clg-SetP-Sch,            !- Cooling Setpoint Schedule Name
     ;                        !- Constant Cooling Setpoint {C}
 
-  HVACTemplate:Zone:VAV:FanPowered,
+  HVACTemplate:Zone:VAV,
     SPACE1-1,                !- Zone Name
     VAV Sys 1,               !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Primary Supply Air Maximum Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
-    autosize,                !- Primary Supply Air Minimum Flow Fraction
-    autosize,                !- Secondary Supply Air Maximum Flow Rate {m3/s}
-    Series,                  !- Flow Type
-    autosize,                !- Parallel Fan On Flow Fraction
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
     0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
     0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
     HotWater,                !- Reheat Coil Type
     ,                        !- Reheat Coil Availability Schedule Name
-    0.7,                     !- Fan Total Efficiency
-    1000,                    !- Fan Delta Pressure {Pa}
-    0.9,                     !- Fan Motor Efficiency
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
     ,                        !- Supply Plenum Name
     ,                        !- Return Plenum Name
     None,                    !- Baseboard Heating Type
@@ -1823,26 +2005,28 @@ RunPeriod,
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:VAV:FanPowered,
+  HVACTemplate:Zone:VAV,
     SPACE2-1,                !- Zone Name
     VAV Sys 1,               !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Primary Supply Air Maximum Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
-    autosize,                !- Primary Supply Air Minimum Flow Fraction
-    autosize,                !- Secondary Supply Air Maximum Flow Rate {m3/s}
-    Series,                  !- Flow Type
-    autosize,                !- Parallel Fan On Flow Fraction
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
     0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
     0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
     HotWater,                !- Reheat Coil Type
     ,                        !- Reheat Coil Availability Schedule Name
-    0.7,                     !- Fan Total Efficiency
-    1000,                    !- Fan Delta Pressure {Pa}
-    0.9,                     !- Fan Motor Efficiency
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
     ,                        !- Supply Plenum Name
     ,                        !- Return Plenum Name
     None,                    !- Baseboard Heating Type
@@ -1855,26 +2039,28 @@ RunPeriod,
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:VAV:FanPowered,
+  HVACTemplate:Zone:VAV,
     SPACE3-1,                !- Zone Name
     VAV Sys 1,               !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Primary Supply Air Maximum Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
-    autosize,                !- Primary Supply Air Minimum Flow Fraction
-    autosize,                !- Secondary Supply Air Maximum Flow Rate {m3/s}
-    Series,                  !- Flow Type
-    autosize,                !- Parallel Fan On Flow Fraction
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
     0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
     0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
     HotWater,                !- Reheat Coil Type
     ,                        !- Reheat Coil Availability Schedule Name
-    0.7,                     !- Fan Total Efficiency
-    1000,                    !- Fan Delta Pressure {Pa}
-    0.9,                     !- Fan Motor Efficiency
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
     ,                        !- Supply Plenum Name
     ,                        !- Return Plenum Name
     None,                    !- Baseboard Heating Type
@@ -1887,26 +2073,28 @@ RunPeriod,
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:VAV:FanPowered,
+  HVACTemplate:Zone:VAV,
     SPACE4-1,                !- Zone Name
     VAV Sys 1,               !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Primary Supply Air Maximum Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
-    autosize,                !- Primary Supply Air Minimum Flow Fraction
-    autosize,                !- Secondary Supply Air Maximum Flow Rate {m3/s}
-    Series,                  !- Flow Type
-    autosize,                !- Parallel Fan On Flow Fraction
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
     0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
     0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
     HotWater,                !- Reheat Coil Type
     ,                        !- Reheat Coil Availability Schedule Name
-    0.7,                     !- Fan Total Efficiency
-    1000,                    !- Fan Delta Pressure {Pa}
-    0.9,                     !- Fan Motor Efficiency
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
     ,                        !- Supply Plenum Name
     ,                        !- Return Plenum Name
     None,                    !- Baseboard Heating Type
@@ -1992,7 +2180,7 @@ RunPeriod,
     PLENUM-1,                !- Return Plenum Name
     DrawThrough,             !- Supply Fan Placement
     InletVaneDampers,        !- Supply Fan Part-Load Power Coefficients
-    CycleOnAnyZoneFansOnly,  !- Night Cycle Control
+    CycleOnAny,              !- Night Cycle Control
     ,                        !- Night Cycle Control Zone Name
     None,                    !- Heat Recovery Type
     0.70,                    !- Sensible Heat Recovery Effectiveness
@@ -2031,37 +2219,126 @@ RunPeriod,
     12.2,                    !- Chilled Water Setpoint at Outdoor Dry-Bulb Low {C}
     15.6,                    !- Chilled Water Reset Outdoor Dry-Bulb Low {C}
     6.7,                     !- Chilled Water Setpoint at Outdoor Dry-Bulb High {C}
-    26.7,                    !- Chilled Water Reset Outdoor Dry-Bulb High {C}
-    ,                        !- Chilled Water Primary Pump Type
-    ,                        !- Chilled Water Secondary Pump Type
-    ,                        !- Condenser Water Pump Type
-    ,                        !- Chilled Water Supply Side Bypass Pipe
-    ,                        !- Chilled Water Demand Side Bypass Pipe
-    ,                        !- Condenser Water Supply Side Bypass Pipe
-    ,                        !- Condenser Water Demand Side Bypass Pipe
-    ,                        !- Fluid Type
-    ,                        !- Loop Design Delta Temperature {deltaC}
-    7.22;                    !- Minimum Outdoor Dry Bulb Temperature {C}
+    26.7;                    !- Chilled Water Reset Outdoor Dry-Bulb High {C}
 
-  HVACTemplate:Plant:Chiller,
+  HVACTemplate:Plant:Chiller:ObjectReference,
+    Main Chiller Connection, !- Name
+    Chiller:Electric:EIR,    !- Chiller Object Type
+    Main Chiller,            !- Chiller Name
+    1;                       !- Priority
+
+  Chiller:Electric:EIR,
     Main Chiller,            !- Name
-    ElectricReciprocatingChiller,  !- Chiller Type
-    autosize,                !- Capacity {W}
-    3.2,                     !- Nominal COP {W/W}
+    autosize,                !- Reference Capacity {W}
+    3.2,                     !- Reference COP {W/W}
+    6.67,                    !- Reference Leaving Chilled Water Temperature {C}
+    29.4,                    !- Reference Entering Condenser Fluid Temperature {C}
+    autosize,                !- Reference Chilled Water Flow Rate {m3/s}
+    autosize,                !- Reference Condenser Fluid Flow Rate {m3/s}
+    Main Chiller RecipCapFT, !- Cooling Capacity Function of Temperature Curve Name
+    Main Chiller RecipEIRFT, !- Electric Input to Cooling Output Ratio Function of Temperature Curve Name
+    Main Chiller RecipEIRFPLR,  !- Electric Input to Cooling Output Ratio Function of Part Load Ratio Curve Name
+    0.0,                     !- Minimum Part Load Ratio
+    1.0,                     !- Maximum Part Load Ratio
+    1.0,                     !- Optimum Part Load Ratio
+    0.25,                    !- Minimum Unloading Ratio
+    Main Chiller ChW Inlet,  !- Chilled Water Inlet Node Name
+    Main Chiller ChW Outlet, !- Chilled Water Outlet Node Name
+    Main Chiller Cnd Inlet,  !- Condenser Inlet Node Name
+    Main Chiller Cnd Outlet, !- Condenser Outlet Node Name
     WaterCooled,             !- Condenser Type
-    1,                       !- Priority
-    ;                        !- Sizing Factor
+    ,                        !- Condenser Fan Power Ratio {W/W}
+    1,                       !- Fraction of Compressor Electric Consumption Rejected by Condenser
+    5.0,                     !- Leaving Chilled Water Lower Temperature Limit {C}
+    ConstantFlow,            !- Chiller Flow Mode
+    0,                       !- Design Heat Recovery Water Flow Rate {m3/s}
+    ,                        !- Heat Recovery Inlet Node Name
+    ,                        !- Heat Recovery Outlet Node Name
+    1.0;                     !- Sizing Factor
 
-  HVACTemplate:Plant:Tower,
+! Cooling Capacity Function of Temperature Curve for open or hermetic water-cooled reciprocating chillers
+! Same as DOE-2.1E HERM-REC-CAP-FT (CCAPT4) and OPEN-REC-CAP-FT (CCAPT2)
+
+  Curve:Biquadratic,
+    Main Chiller RecipCapFT, !- Name
+    0.507883,                !- Coefficient1 Constant
+    0.145228,                !- Coefficient2 x
+    -0.00625644,             !- Coefficient3 x**2
+    -0.0011178,              !- Coefficient4 y
+    -0.0001296,              !- Coefficient5 y**2
+    -0.00028188,             !- Coefficient6 x*y
+    5,                       !- Minimum Value of x
+    10,                      !- Maximum Value of x
+    24,                      !- Minimum Value of y
+    35;                      !- Maximum Value of y
+
+! Energy Input to Cooling Output Ratio Function of Temperature Curve for open or hermetic water-cooled reciprocating chillers
+! Same as DOE-2.1E HERM-REC-EIR-FT (EIRT4) and OPEN-REC-EIR-FT (EIRT2)
+
+  Curve:Biquadratic,
+    Main Chiller RecipEIRFT, !- Name
+    1.03076,                 !- Coefficient1 Constant
+    -0.103536,               !- Coefficient2 x
+    0.00710208,              !- Coefficient3 x**2
+    0.0093186,               !- Coefficient4 y
+    0.00031752,              !- Coefficient5 y**2
+    -0.00104328,             !- Coefficient6 x*y
+    5,                       !- Minimum Value of x
+    10,                      !- Maximum Value of x
+    24,                      !- Minimum Value of y
+    35;                      !- Maximum Value of y
+
+! Energy Input to Cooling Output Ratio Function of Part Load Ratio Curve for open or hermetic water-cooled reciprocating chillers
+! Same as DOE-2.1E HERM-REC-EIR-FPLR (EIRPLR4) and OPEN-REC-EIR-FPLR (EIRPLR2)
+
+  Curve:Quadratic,
+    Main Chiller RecipEIRFPLR,  !- Name
+    0.088065,                !- Coefficient1 Constant
+    1.137742,                !- Coefficient2 x
+    -0.225806,               !- Coefficient3 x**2
+    0,                       !- Minimum Value of x
+    1;                       !- Maximum Value of x
+
+  HVACTemplate:Plant:Tower:ObjectReference,
+    Main Tower Connection,   !- Name
+    CoolingTower:SingleSpeed,!- Cooling Tower Object Type
+    Main Tower,              !- Cooling Tower Name
+    1;                       !- Priority
+
+  CoolingTower:SingleSpeed,
     Main Tower,              !- Name
-    SingleSpeed,             !- Tower Type
-    autosize,                !- High Speed Nominal Capacity {W}
-    autosize,                !- High Speed Fan Power {W}
-    autosize,                !- Low Speed Nominal Capacity {W}
-    autosize,                !- Low Speed Fan Power {W}
-    autosize,                !- Free Convection Capacity {W}
-    1,                       !- Priority
-    ;                        !- Sizing Factor
+    Main Tower CndW Inlet,   !- Water Inlet Node Name
+    Main Tower CndW Outlet,  !- Water Outlet Node Name
+    autosize,                !- Design Water Flow Rate {m3/s}
+    autosize,                !- Design Air Flow Rate {m3/s}
+    autosize,                !- Fan Power at Design Air Flow Rate {W}
+    autosize,                !- U-Factor Times Area Value at Design Air Flow Rate {W/K}
+    autosize,                !- Air Flow Rate in Free Convection Regime {m3/s}
+    autosize,                !- U-Factor Times Area Value at Free Convection Air Flow Rate {W/K}
+    UFactorTimesAreaAndDesignWaterFlowRate,  !- Performance Input Method
+    ,                        !- Nominal Capacity {W}
+    ,                        !- Free Convection Capacity {W}
+    ,                        !- Basin Heater Capacity {W/K}
+    ,                        !- Basin Heater Setpoint Temperature {C}
+    ,                        !- Basin Heater Operating Schedule Name
+    SaturatedExit,           !- Evaporation Loss Mode
+    ,                        !- Evaporation Loss Factor {percent/K}
+    0.008,                   !- Drift Loss Percent {percent}
+    ConcentrationRatio,      !- Blowdown Calculation Mode
+    3,                       !- Blowdown Concentration Ratio
+    ,                        !- Blowdown Makeup Water Usage Schedule Name
+    ,                        !- Supply Water Storage Tank Name
+    Main Tower Cooling Tower Outdoor Air Inlet Node,  !- Outdoor Air Inlet Node Name
+    FanCycling,              !- Capacity Control
+    ,                        !- Number of Cells
+    ,                        !- Cell Control
+    ,                        !- Cell Minimum  Water Flow Rate Fraction
+    ,                        !- Cell Maximum Water Flow Rate Fraction
+    1.0;                     !- Sizing Factor
+
+  OutdoorAir:Node,
+    Main Tower Cooling Tower Outdoor Air Inlet Node,  !- Name
+    -1;                      !- Height Above Ground {m}
 
   HVACTemplate:Plant:HotWaterLoop,
     Hot Water Loop,          !- Name
@@ -2079,11 +2356,35 @@ RunPeriod,
     65.6,                    !- Hot Water Setpoint at Outdoor Dry-Bulb High {C}
     10;                      !- Hot Water Reset Outdoor Dry-Bulb High {C}
 
-  HVACTemplate:Plant:Boiler,
+  HVACTemplate:Plant:Boiler:ObjectReference,
+    Main Boiler Connection,  !- Name
+    Boiler:HotWater,         !- Boiler Object Type
+    Main Boiler,             !- Boiler Name
+    1;                       !- Priority
+
+  Boiler:HotWater,
     Main Boiler,             !- Name
-    HotWaterBoiler,          !- Boiler Type
-    autosize,                !- Capacity {W}
-    0.8,                     !- Efficiency
     NaturalGas,              !- Fuel Type
-    1,                       !- Priority
-    ;                        !- Sizing Factor
+    autosize,                !- Nominal Capacity {W}
+    0.8,                     !- Nominal Thermal Efficiency
+    LeavingBoiler,           !- Efficiency Curve Temperature Evaluation Variable
+    Main Boiler Efficiency Curve,  !- Normalized Boiler Efficiency Curve Name
+    81,                      !- Design Water Outlet Temperature {C}
+    autosize,                !- Design Water Flow Rate {m3/s}
+    0.0,                     !- Minimum Part Load Ratio
+    1.1,                     !- Maximum Part Load Ratio
+    1.0,                     !- Optimum Part Load Ratio
+    Main Boiler HW Inlet,    !- Boiler Water Inlet Node Name
+    Main Boiler HW Outlet,   !- Boiler Water Outlet Node Name
+    100.0,                   !- Water Outlet Upper Temperature Limit {C}
+    ConstantFlow,            !- Boiler Flow Mode
+    0,                       !- Parasitic Electric Load {W}
+    1.0;                     !- Sizing Factor
+
+  Curve:Quadratic,
+    Main Boiler Efficiency Curve,  !- Name
+    0.97,                    !- Coefficient1 Constant
+    0.0633,                  !- Coefficient2 x
+    -0.0333,                 !- Coefficient3 x**2
+    0.0,                     !- Minimum Value of x
+    1.0;                     !- Maximum Value of x
