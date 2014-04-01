@@ -14,8 +14,8 @@ public class ObjectiveCalculator{
 	private double electricity;
 	private double naturalGas;
 
-	public static final double NATURAL_GAS_RATE = 1.0 ;
-	public static final double ELECTRICTY_RATE = 1.5 ;
+	public static final double NATURAL_GAS_RATE = 8.09 ;
+	public static final double ELECTRICTY_RATE = 8.31  ;
 	
 	public static void main(String[] args) {
 		double[] genome = {1,1,0};
