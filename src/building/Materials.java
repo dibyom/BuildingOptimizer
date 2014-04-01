@@ -1,4 +1,3 @@
-
 package building;
 
 public class Materials {
@@ -14,20 +13,60 @@ public class Materials {
 		"GREY 3MM",
 		"GREY 6MM",
 		"GREY 12MM",
-		"LoE CLEAR 6MM",
-		"LoE TINT 6MM",
-		"COATED POLY-77",
-		"COATED POLY-66",
-		"COATED POLY-55",
-		"COATED POLY-44",
-		"COATED POLY-33"
+		"REF A TINT LO 6MM",
+		"REF A TINT MID 6MM",
+		"REF A TINT HI 6MM"
 	};
 
-	public static final double[] glazing_materials_cost = {1.0,2.0,3.0,1.1,1.2,1.3,1.4,1.5,1,6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6};
+	public static final double[] glazing_materials_cost = {
+		12.03,
+		12.64,
+		33.71,
+		79.75,
+		18.38,
+		27.79,
+		36.34,
+		18.38,
+		27.79,
+		36.34,
+		15.02,
+		22.78,
+		34.56
+	};
+	
+	public static final String[] wall_materials = {
+		"I04 89mm batt insulation",
+		"I05 154mm batt insulation",
+		"I06 244mm batt insulation",
+		"I01 25mm insulation board",
+		"I02 50mm insulation board",
+		"I03 75mm insulation board",
+		"Insulation: Glass fiber - organic bonded - 25mm",
+		"Insulation: Glass fiber - organic bonded - 50mm",
+		"Insulation: Glass fiber - organic bonded - 75mm"
+	};
 
-	public static final String[] wall_materials = {};
+	public static final double[] wall_materials_cost = {
+		59.6,
+		68.0,
+		73.2,
+		64.8,
+		82.4,
+		104.4,
+		26.0,
+		40.4,
+		55.2
+	};	
 
-	public static final double[] wall_materials_cost = {1.0,2.0,3.0};	
-
-	public static final double[] hvac_systems_cost = {1.0,2.0,3.0,4.0,5.0,6.0,7.5,8.6,9.0,9.8};
+	public static final double[] hvac_systems_cost = {
+		5200,
+		5267,
+		6400,
+		4336,
+		5267,
+		6700,
+		5388,
+		5567,
+		6267
+	};
 }
