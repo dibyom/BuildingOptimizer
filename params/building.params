@@ -2,7 +2,7 @@ parent.0 = nsga2.params
 
 seed.0 = time
 eval.problem = building.Building
-generations = 100
+generations = 150
 
 # NSGA 2
 pop.subpop.0.species.pipe		     		= ec.vector.breed.VectorMutationPipeline
