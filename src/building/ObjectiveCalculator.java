@@ -54,8 +54,7 @@ public class ObjectiveCalculator{
 
 	public double calculateInstallationCost()
 	{
-		double insulationCost = 0;
-		//double insulationCost = BuildingProperties.NO_WALLS * BuildingProperties.WALL_AREA * Materials.wall_materials_cost[insulationMaterial];
+		double insulationCost = BuildingProperties.NO_WALLS * BuildingProperties.WALL_AREA * Materials.wall_materials_cost[insulationMaterial];
 		double glazingCost = BuildingProperties.NO_WINDOWS * BuildingProperties.WINDOW_AREA * Materials.glazing_materials_cost[glazingMaterial];
 		double hvacSystemCost = Materials.hvac_systems_cost[hvacSystem];
 
