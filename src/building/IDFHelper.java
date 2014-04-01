@@ -156,7 +156,7 @@ public class IDFHelper
 	* @param insulationMaterial index of insulation material
 	* @return a string containing the changed insulation material
 	*/
-	public String changeInsulation(BufferedReader br, int insulationMaterial, int lastLayerMaterial) throws IOException
+	public String changeInsulation(BufferedReader br, int insulationMaterial) throws IOException
 	{
 		String currentLine = null;
 
