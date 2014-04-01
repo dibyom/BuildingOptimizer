@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Building extends Problem implements SimpleProblemForm {
 
-	public static final int NUM_DECISION_VARIABLES = 6;
+	public static final int NUM_DECISION_VARIABLES = 5;
 	public void evaluate(final EvolutionState state, final Individual ind, final int subpopulation, final int threadnum)
 	{
 		
@@ -24,7 +24,7 @@ public class Building extends Problem implements SimpleProblemForm {
 	DoubleVectorIndividual temp = (DoubleVectorIndividual)ind;
 	double[] genome = temp.genome;
 
-	// Ensure the number of decision variables is 4
+	// Ensure the number of decision variables is 5
 	int numDecisionVars = genome.length; 
 	if(numDecisionVars! = NUM_DECISION_VARIABLES) throw new RuntimeException("Building needs exactly 5 decision variables (genes).");
 

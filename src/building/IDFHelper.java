@@ -81,14 +81,14 @@ public class IDFHelper
 						// if(nextLine.toLowerCase().contains("wall"))
 						// {
 						// 	lineBuilder.append(nextLine);
-							String modifiedWall = changeInsulation(br, (int) genome[0], (int) genome[1]);
+							String modifiedWall = changeInsulation(br, (int) genome[0]);
 						// 	lineBuilder.append(modifiedWall);
 						// }
 
 						//If it corresponds to a window, change the glazing
 						if(nextLine.contains("!- Name Window"))
 						{	
-							String modifiedWindow = changeGlazing(br, (int) genome[2]);
+							String modifiedWindow = changeGlazing(br, (int) genome[1]);
 							lineBuilder.append(modifiedWindow);
 						}
 
@@ -104,13 +104,13 @@ public class IDFHelper
 						if(nextLine.contains(HEATING_SET_POINT_NAME + ",")) 
 						{
 							removeObject(br);
-							String schedule = generateSchedule(HEATING_SET_POINT_NAME, genome[3]);
+							String schedule = generateSchedule(HEATING_SET_POINT_NAME, genome[2]);
 							bw.write(schedule);	
 						}
 						else if (nextLine.contains(COOLING_SET_POINT_NAME+","))
 						{
 							removeObject(br);
-							String schedule = generateSchedule(COOLING_SET_POINT_NAME, genome[4]);
+							String schedule = generateSchedule(COOLING_SET_POINT_NAME, genome[3]);
 							bw.write(schedule);
 						}
 						else
@@ -182,9 +182,8 @@ public class IDFHelper
 		lineBuilder.append(currentLine);
 		lineBuilder.append("\n");
 		
-		//Change and append layer 4
-		currentLine = br.readLine();
-		currentLine = currentLine.replace(currentLine, layer4);
+		//Append layer 4
+		lineBuilder.append(br.readLine());
 		lineBuilder.append("\n");
 
 		return lineBuilder.toString();
