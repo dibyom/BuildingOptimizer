@@ -13,8 +13,8 @@
 !
 ! Location:                Chicago, IL
 !
-! Design Days:             CHICAGO_IL_USA Annual Heating 99% Design Conditions DB, MaxDB= -17.3°C
-!                          CHICAGO_IL_USA Annual Cooling 1% Design Conditions, MaxDB=  31.5°C MCWB=  23.0°C
+! Design Days:             CHICAGO_IL_USA Annual Heating 99% Design Conditions DB, MaxDB= -17.3Â°C
+!                          CHICAGO_IL_USA Annual Cooling 1% Design Conditions, MaxDB=  31.5Â°C MCWB=  23.0Â°C
 !
 ! Run Period (Weather File): Winter 1/14, Summer 7/7, CHICAGO_IL_USA TMY2-94846
 !
@@ -194,7 +194,7 @@ RunPeriod,
     No,                      !- Run Simulation for Sizing Periods
     Yes;                     !- Run Simulation for Weather File Run Periods
 
-! CHICAGO_IL_USA Annual Heating 99% Design Conditions DB, MaxDB= -17.3°C
+! CHICAGO_IL_USA Annual Heating 99% Design Conditions DB, MaxDB= -17.3Â°C
 
   SizingPeriod:DesignDay,
     CHICAGO_IL_USA Annual Heating 99% Design Conditions DB,  !- Name
@@ -224,7 +224,7 @@ RunPeriod,
     ,                        !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud) {dimensionless}
     0.0;                     !- Sky Clearness
 
-! CHICAGO_IL_USA Annual Cooling 1% Design Conditions, MaxDB=  31.5°C MCWB=  23.0°C
+! CHICAGO_IL_USA Annual Cooling 1% Design Conditions, MaxDB=  31.5Â°C MCWB=  23.0Â°C
 
   SizingPeriod:DesignDay,
     CHICAGO_IL_USA Annual Cooling 1% Design Conditions DB/MCWB,  !- Name
@@ -390,6 +390,80 @@ RunPeriod,
     AL23,                    !- Name
     0.1530000;               !- Thermal Resistance {m2-K/W}
 
+ ! ==== Adding Insulation Material =====
+   Material,
+    I04 89mm batt insulation,!- Name
+    VeryRough,               !- Roughness
+    0.0894,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    I05 154mm batt insulation,  !- Name
+    VeryRough,               !- Roughness
+    0.1544,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    I06 244mm batt insulation,  !- Name
+    VeryRough,               !- Roughness
+    0.2438,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+    Material,
+    I01 25mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0254,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+   Material,
+    I02 50mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0508,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+   Material,
+    I03 75mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0762,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+    Material,
+    Insulation: Glass fiber - organic bonded - 25mm,  !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    64,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Glass fiber - organic bonded - 50mm,  !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    140,                     !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Glass fiber - organic bonded - 75mm,  !- Name
+    MediumRough,             !- Roughness
+    0.075,                   !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    140,                     !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+ ! ===================================================
+
 Construction,
     ROOF-1,                  !- Name
     RG01,                    !- Outside Layer
@@ -401,7 +475,7 @@ Construction,
     WALL-1,                  !- Name
     WD01,                    !- Outside Layer
     PW03,                    !- Layer 2
-    IN02,                    !- Layer 3
+    I04 89mm batt insulation,                    !- Layer 3
     GP01;                    !- Layer 4
 
 Construction,
@@ -592,150 +666,6 @@ Construction,
     .84,                     !- Front Side Infrared Hemispherical Emissivity
     .84,                     !- Back Side Infrared Hemispherical Emissivity
     .9;                      !- Conductivity {W/m-K}
-
-    WindowMaterial:Glazing,
-    LoE CLEAR 3MM,           !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .003,                    !- Thickness {m}
-    .630,                    !- Solar Transmittance at Normal Incidence
-    .190,                    !- Front Side Solar Reflectance at Normal Incidence
-    .220,                    !- Back Side Solar Reflectance at Normal Incidence
-    .850,                    !- Visible Transmittance at Normal Incidence
-    .056,                    !- Front Side Visible Reflectance at Normal Incidence
-    .079,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .84,                     !- Front Side Infrared Hemispherical Emissivity
-    .10,                     !- Back Side Infrared Hemispherical Emissivity
-    .9;                      !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    LoE CLEAR 6MM,           !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .006,                    !- Thickness {m}
-    .600,                    !- Solar Transmittance at Normal Incidence
-    .170,                    !- Front Side Solar Reflectance at Normal Incidence
-    .220,                    !- Back Side Solar Reflectance at Normal Incidence
-    .840,                    !- Visible Transmittance at Normal Incidence
-    .055,                    !- Front Side Visible Reflectance at Normal Incidence
-    .078,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .84,                     !- Front Side Infrared Hemispherical Emissivity
-    .10,                     !- Back Side Infrared Hemispherical Emissivity
-    .9;                      !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    LoE TINT 6MM,            !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .006,                    !- Thickness {m}
-    .360,                    !- Solar Transmittance at Normal Incidence
-    .093,                    !- Front Side Solar Reflectance at Normal Incidence
-    .200,                    !- Back Side Solar Reflectance at Normal Incidence
-    .500,                    !- Visible Transmittance at Normal Incidence
-    .035,                    !- Front Side Visible Reflectance at Normal Incidence
-    .054,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .84,                     !- Front Side Infrared Hemispherical Emissivity
-    .10,                     !- Back Side Infrared Hemispherical Emissivity
-    .9;                      !- Conductivity {W/m-K}
-
-    WindowMaterial:Glazing,
-    COATED POLY-88,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .656,                    !- Solar Transmittance at Normal Incidence
-    .249,                    !- Front Side Solar Reflectance at Normal Incidence
-    .227,                    !- Back Side Solar Reflectance at Normal Incidence
-    .868,                    !- Visible Transmittance at Normal Incidence
-    .064,                    !- Front Side Visible Reflectance at Normal Incidence
-    .060,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .136,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    COATED POLY-77,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .504,                    !- Solar Transmittance at Normal Incidence
-    .402,                    !- Front Side Solar Reflectance at Normal Incidence
-    .398,                    !- Back Side Solar Reflectance at Normal Incidence
-    .766,                    !- Visible Transmittance at Normal Incidence
-    .147,                    !- Front Side Visible Reflectance at Normal Incidence
-    .167,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .075,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    COATED POLY-66,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .403,                    !- Solar Transmittance at Normal Incidence
-    .514,                    !- Front Side Solar Reflectance at Normal Incidence
-    .515,                    !- Back Side Solar Reflectance at Normal Incidence
-    .658,                    !- Visible Transmittance at Normal Incidence
-    .256,                    !- Front Side Visible Reflectance at Normal Incidence
-    .279,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .057,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    COATED POLY-55,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .320,                    !- Solar Transmittance at Normal Incidence
-    .582,                    !- Front Side Solar Reflectance at Normal Incidence
-    .593,                    !- Back Side Solar Reflectance at Normal Incidence
-    .551,                    !- Visible Transmittance at Normal Incidence
-    .336,                    !- Front Side Visible Reflectance at Normal Incidence
-    .375,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .046,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    COATED POLY-44,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .245,                    !- Solar Transmittance at Normal Incidence
-    .626,                    !- Front Side Solar Reflectance at Normal Incidence
-    .641,                    !- Back Side Solar Reflectance at Normal Incidence
-    .439,                    !- Visible Transmittance at Normal Incidence
-    .397,                    !- Front Side Visible Reflectance at Normal Incidence
-    .453,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .037,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
-
-  WindowMaterial:Glazing,
-    COATED POLY-33,          !- Name
-    SpectralAverage,         !- Optical Data Type
-    ,                        !- Window Glass Spectral Data Set Name
-    .00051,                  !- Thickness {m}
-    .178,                    !- Solar Transmittance at Normal Incidence
-    .739,                    !- Front Side Solar Reflectance at Normal Incidence
-    .738,                    !- Back Side Solar Reflectance at Normal Incidence
-    .330,                    !- Visible Transmittance at Normal Incidence
-    .566,                    !- Front Side Visible Reflectance at Normal Incidence
-    .591,                    !- Back Side Visible Reflectance at Normal Incidence
-    .0,                      !- Infrared Transmittance at Normal Incidence
-    .035,                    !- Front Side Infrared Hemispherical Emissivity
-    .720,                    !- Back Side Infrared Hemispherical Emissivity
-    .14;                     !- Conductivity {W/m-K}
 
  ! ======Finish added Glazing materials
 Construction,
