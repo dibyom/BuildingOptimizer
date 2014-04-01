@@ -80,14 +80,15 @@ public class IDFHelper
 						//If the line corresponds to a wall, change the insulation	
 						// if(nextLine.toLowerCase().contains("wall"))
 						// {
-						// 	String modifiedWall = changeInsulation(br, (int) genome[0]);
+						// 	lineBuilder.append(nextLine);
+							String modifiedWall = changeInsulation(br, (int) genome[0], (int) genome[1]);
 						// 	lineBuilder.append(modifiedWall);
 						// }
 
 						//If it corresponds to a window, change the glazing
 						if(nextLine.contains("!- Name Window"))
 						{	
-							String modifiedWindow = changeGlazing(br, (int) genome[1]);
+							String modifiedWindow = changeGlazing(br, (int) genome[2]);
 							lineBuilder.append(modifiedWindow);
 						}
 
@@ -155,25 +156,36 @@ public class IDFHelper
 	* @param insulationMaterial index of insulation material
 	* @return a string containing the changed insulation material
 	*/
-	public String changeInsulation(BufferedReader br, int insulationMaterial) throws IOException
+	public String changeInsulation(BufferedReader br, int insulationMaterial, int lastLayerMaterial) throws IOException
 	{
 		String currentLine = null;
-		String insulation_material = "\t" + insulation_materials[insulationMaterial] 
-		+ ";\t\t\t!- Layer 3";
+
+		String layer3 = "\t" + insulation_materials[insulationMaterial] 
+		+ ",\t\t\t!- Layer 3";
+
+		String layer4 = "\t" + last_layer_materials[lastLayerMaterial]
+		+ ";\t\t\t!- Layer 4";
+		
 		StringBuilder lineBuilder = new StringBuilder();
-		do{
-			currentLine = br.readLine();
-			if(currentLine.contains("!- Layer 3"))
-			{	
-				//@TODO
-				if(currentLine.contains(";"))
-				currentLine = currentLine.replace(currentLine, "\tIN46;\t\t\t!- Layer 3");	
-				else
-					currentLine = currentLine.replace(currentLine, "\tIN46,\t\t\t!- Layer 3");		
-			}
-			lineBuilder.append(currentLine);
-			lineBuilder.append("\n");
-		}while(!currentLine.contains(";"));
+		
+		//Append layer 1
+		lineBuilder.append(br.readLine());
+		lineBuilder.append("\n");
+		
+		//Append layer 2
+		lineBuilder.append(br.readLine());
+		lineBuilder.append("\n");
+		
+		//Change and append layer 3
+		currentLine = br.readLine();
+		currentLine = currentLine.replace(currentLine, layer3);
+		lineBuilder.append(currentLine);
+		lineBuilder.append("\n");
+		
+		//Change and append layer 4
+		currentLine = br.readLine();
+		currentLine = currentLine.replace(currentLine, layer4);
+		lineBuilder.append("\n");
 
 		return lineBuilder.toString();
 	}
