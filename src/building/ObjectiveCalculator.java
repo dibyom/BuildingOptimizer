@@ -14,6 +14,7 @@ public class ObjectiveCalculator{
 	private double electricity;
 	private double naturalGas;
 
+
 	public static final double NATURAL_GAS_RATE = 8.31 ;
 	public static final double ELECTRICTY_RATE = 8.09 ;
 	
