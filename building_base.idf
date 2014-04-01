@@ -667,6 +667,55 @@ Construction,
     .84,                     !- Back Side Infrared Hemispherical Emissivity
     .9;                      !- Conductivity {W/m-K}
 
+    WindowMaterial:Glazing,
+    REF A TINT LO 6MM,       !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .040,                    !- Solar Transmittance at Normal Incidence
+    .150,                    !- Front Side Solar Reflectance at Normal Incidence
+    .470,                    !- Back Side Solar Reflectance at Normal Incidence
+    .050,                    !- Visible Transmittance at Normal Incidence
+    .170,                    !- Front Side Visible Reflectance at Normal Incidence
+    .370,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .41,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    REF A TINT MID 6MM,      !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .060,                    !- Solar Transmittance at Normal Incidence
+    .130,                    !- Front Side Solar Reflectance at Normal Incidence
+    .420,                    !- Back Side Solar Reflectance at Normal Incidence
+    .090,                    !- Visible Transmittance at Normal Incidence
+    .140,                    !- Front Side Visible Reflectance at Normal Incidence
+    .350,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .47,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+  WindowMaterial:Glazing,
+    REF A TINT HI 6MM,       !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    .006,                    !- Thickness {m}
+    .100,                    !- Solar Transmittance at Normal Incidence
+    .110,                    !- Front Side Solar Reflectance at Normal Incidence
+    .380,                    !- Back Side Solar Reflectance at Normal Incidence
+    .100,                    !- Visible Transmittance at Normal Incidence
+    .110,                    !- Front Side Visible Reflectance at Normal Incidence
+    .320,                    !- Back Side Visible Reflectance at Normal Incidence
+    .0,                      !- Infrared Transmittance at Normal Incidence
+    .84,                     !- Front Side Infrared Hemispherical Emissivity
+    .53,                     !- Back Side Infrared Hemispherical Emissivity
+    .9;                      !- Conductivity {W/m-K}
+
+
  ! ======Finish added Glazing materials
 Construction,
     Dbl Clr 3mm/13mm Air,    !- Name Window
