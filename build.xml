@@ -131,7 +131,7 @@
 	
 	<!-- RUNNING TASK - "ant idf" -->
 	<target name="idf" depends="compile">
-		<java fork="true" classname="building.ObjectiveCalculator" maxmemory="1024m">
+		<java fork="true" classname="building.IDFHelper" maxmemory="1024m">
 			<arg line="${args}"/>
 			<classpath refid="run.classpath" />
         </java>

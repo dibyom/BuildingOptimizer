@@ -29,11 +29,11 @@ public class IDFHelper
 	
 	public static void main(String argv[])
 	{
-		double[] genome = {90.000, 60.000};
+		double[] genome = {2.0,2.0,2.0,18,26};
 		//modifyIDF(genome);
 		//parseBuildingCSV();
 		IDFHelper i = new IDFHelper();
-		i.appendHVACSystem(1, "building_base.idf");
+		i.modifyIDF(genome);
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class IDFHelper
 	{
 		
 		String oldFileName = "building_base.idf";
-		String tmpFileName = "bentley.idf.temp";
+		String tmpFileName = "temporary.idf";
 
 		BufferedReader br = null;
 		BufferedWriter bw = null;
@@ -76,13 +76,13 @@ public class IDFHelper
 						String nextLine = br.readLine();
 						lineBuilder.append("\n" + nextLine + "\n");
 						
-						//If the line corresponds to a wall, change the insulation	
-						// if(nextLine.toLowerCase().contains("wall"))
-						// {
-						// 	lineBuilder.append(nextLine);
+						//if the line corresponds to a wall, change the insulation	
+						if(nextLine.contains("!- NameWall"))
+						{
+							
 							String modifiedWall = changeInsulation(br, (int) genome[0]);
-						// 	lineBuilder.append(modifiedWall);
-						// }
+						 	lineBuilder.append(modifiedWall);
+						 }
 
 						//If it corresponds to a window, change the glazing
 						if(nextLine.contains("!- Name Window"))
@@ -138,11 +138,11 @@ public class IDFHelper
 		
       	// Once everything is complete, delete old file..
 		File oldFile = new File(oldFileName);
-		oldFile.delete();
+		//oldFile.delete();
 
       	// And rename tmp file's name to old file name
 		File newFile = new File(tmpFileName);
-		newFile.renameTo(oldFile); 
+		//newFile.renameTo(oldFile); 
 
 		// Append the string to the file
 		appendHVACSystem(genome[2], oldFileName);
