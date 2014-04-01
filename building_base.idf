@@ -401,7 +401,7 @@ Construction,
     WALL-1,                  !- NameWall
     WD01,                    !- Outside Layer
     PW03,                    !- Layer 2
-    IN02,                    !- Layer 3
+	I01 25mm insulation board,			!- Layer 3
     GP01;                    !- Layer 4
 
 Construction,
@@ -593,6 +593,7 @@ Construction,
     .84,                     !- Back Side Infrared Hemispherical Emissivity
     .9;                      !- Conductivity {W/m-K}
 
+
   WindowMaterial:Glazing,
     REF A TINT LO 6MM,       !- Name
     SpectralAverage,         !- Optical Data Type
@@ -643,11 +644,482 @@ Construction,
 
     
  ! ======Finish added Glazing materials
+
+  Material,
+    G01 16mm gypsum board,   !- Name
+    MediumSmooth,            !- Roughness
+    0.0159,                  !- Thickness {m}
+    0.16,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G01a 19mm gypsum board,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.16,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G02 16mm plywood,        !- Name
+    Smooth,                  !- Roughness
+    0.0159,                  !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    544,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G03 13mm fiberboard sheathing,  !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.07,                    !- Conductivity {W/m-K}
+    400,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G04 13mm wood,           !- Name
+    MediumSmooth,            !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    608,                     !- Density {kg/m3}
+    1630;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G05 25mm wood,           !- Name
+    MediumSmooth,            !- Roughness
+    0.0254,                  !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    608,                     !- Density {kg/m3}
+    1630;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G06 50mm wood,           !- Name
+    MediumSmooth,            !- Roughness
+    0.0508,                  !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    608,                     !- Density {kg/m3}
+    1630;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    G07 100mm wood,          !- Name
+    MediumSmooth,            !- Roughness
+    0.1016,                  !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    608,                     !- Density {kg/m3}
+    1630;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    I01 25mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0254,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    I02 50mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0508,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    I03 75mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0762,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    I04 89mm batt insulation,!- Name
+    VeryRough,               !- Roughness
+    0.0894,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    I05 154mm batt insulation,  !- Name
+    VeryRough,               !- Roughness
+    0.1544,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    I06 244mm batt insulation,  !- Name
+    VeryRough,               !- Roughness
+    0.2438,                  !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    19,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+  Material,
+    Gypsum or plaster board - 9.5mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0095,                  !- Thickness {m}
+    0.58,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Gypsum or plaster board - 2.7mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0027,                  !- Thickness {m}
+    0.58,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Gypsum or plaster board - 5.9mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0059,                  !- Thickness {m}
+    0.58,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Plywood (Douglas Fir) - 6.4mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0064,                  !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    540,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Plywood (Douglas Fir) - 9.5mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0095,                  !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    540,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Plywood (Douglas Fir) - 12.7mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    540,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Plywood (Douglas Fir) - 15.9mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0159,                  !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    540,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Plywood or wood panels - 19.0mm,  !- Name
+    Smooth,                  !- Roughness
+    0.019,                   !- Thickness {m}
+    0.12,                    !- Conductivity {W/m-K}
+    540,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Sheathing - regular density - 12.7mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.055,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Sheathing - regular density - 19.8mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0198,                  !- Thickness {m}
+    0.055,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Sheathing intermediate density - 12.7mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.057,                   !- Conductivity {W/m-K}
+    350,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Nail-base sheathing - 12.7mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.057,                   !- Conductivity {W/m-K}
+    400,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Shingle backer - 9.5mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0095,                  !- Thickness {m}
+    0.063,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Shingle backer - 7.9mm,  !- Name
+    Smooth,                  !- Roughness
+    0.0079,                  !- Thickness {m}
+    0.063,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Sound deadening board,   !- Name
+    Smooth,                  !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.063,                   !- Conductivity {W/m-K}
+    240,                     !- Density {kg/m3}
+    1260;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Tile and lay-in panels - plain or acoustic - 12.7mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0127,                  !- Thickness {m}
+    0.057,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    590;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Tile and lay-in panels - plain or acoustic - 19mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.057,                   !- Conductivity {W/m-K}
+    290,                     !- Density {kg/m3}
+    590;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Laminated paperboard,    !- Name
+    MediumSmooth,            !- Roughness
+    0.0032,                  !- Thickness {m}
+    0.072,                   !- Conductivity {W/m-K}
+    480,                     !- Density {kg/m3}
+    1380;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Homogeneous board from repulped paper,  !- Name
+    MediumSmooth,            !- Roughness
+    0.0032,                  !- Thickness {m}
+    0.072,                   !- Conductivity {W/m-K}
+    480,                     !- Density {kg/m3}
+    1170;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Hardboard Medium density,!- Name
+    Smooth,                  !- Roughness
+    0.019,                   !- Thickness {m}
+    0.105,                   !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Hardboard High density - service-tempered grade and service grade,  !- Name
+    Smooth,                  !- Roughness
+    0.019,                   !- Thickness {m}
+    0.82,                    !- Conductivity {W/m-K}
+    880,                     !- Density {kg/m3}
+    1340;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Hardboard High density - standard-tempered grade,  !- Name
+    Smooth,                  !- Roughness
+    0.019,                   !- Thickness {m}
+    0.144,                   !- Conductivity {W/m-K}
+    1010,                    !- Density {kg/m3}
+    1340;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Particleboard Low density,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.102,                   !- Conductivity {W/m-K}
+    590,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Particleboard Medium density,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.135,                   !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Particleboard High density,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.17,                    !- Conductivity {W/m-K}
+    1000,                    !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Particleboard Underlayment - 15.9mm,  !- Name
+    MediumRough,             !- Roughness
+    0.0159,                  !- Thickness {m}
+    0.311,                   !- Conductivity {W/m-K}
+    640,                     !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Waferboard,              !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.091,                   !- Conductivity {W/m-K}
+    590,                     !- Density {kg/m3}
+    1300;                    !- Specific Heat {J/kg-K}
+    Material,
+    Insulation: Cellular glass - 25mm,  !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    136,                     !- Density {kg/m3}
+    750;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Cellular glass - 50mm,  !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    136,                     !- Density {kg/m3}
+    750;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Cellular glass - 75mm,  !- Name
+    MediumRough,             !- Roughness
+    0.075,                   !- Thickness {m}
+    0.05,                    !- Conductivity {W/m-K}
+    136,                     !- Density {kg/m3}
+    750;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Glass fiber - organic bonded - 25mm,  !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    64,                      !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Glass fiber - organic bonded - 50mm,  !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    140,                     !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Glass fiber - organic bonded - 75mm,  !- Name
+    MediumRough,             !- Roughness
+    0.075,                   !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    140,                     !- Density {kg/m3}
+    960;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded perlite - organic bonded - 25mm,  !- Name
+    MediumSmooth,            !- Roughness
+    0.025,                   !- Thickness {m}
+    0.052,                   !- Conductivity {W/m-K}
+    16,                      !- Density {kg/m3}
+    1260;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded rubber (rigid) - 25mm,  !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    0.032,                   !- Conductivity {W/m-K}
+    72,                      !- Density {kg/m3}
+    1680;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - extruded (smooth skin surface) (CFC-12 exp.),  !- Name
+    MediumSmooth,            !- Roughness
+    0.025,                   !- Thickness {m}
+    0.029,                   !- Conductivity {W/m-K}
+    29,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - extruded (smooth skin surface) (HCFC-142b exp.),  !- Name
+    MediumSmooth,            !- Roughness
+    0.025,                   !- Thickness {m}
+    0.029,                   !- Conductivity {W/m-K}
+    29,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - molded beads - 16kg/m3 density,  !- Name
+    VeryRough,               !- Roughness
+    0.025,                   !- Thickness {m}
+    0.037,                   !- Conductivity {W/m-K}
+    16,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - molded beads - 20kg/m3 density,  !- Name
+    VeryRough,               !- Roughness
+    0.025,                   !- Thickness {m}
+    0.036,                   !- Conductivity {W/m-K}
+    20,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - molded beads - 24kg/m3 density,  !- Name
+    VeryRough,               !- Roughness
+    0.025,                   !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    24,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - molded beads - 28 k6/m3 density,  !- Name
+    VeryRough,               !- Roughness
+    0.025,                   !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    28,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Expanded polystyrene - molded beads - 32 kg/m3 density,  !- Name
+    VeryRough,               !- Roughness
+    0.025,                   !- Thickness {m}
+    0.033,                   !- Conductivity {W/m-K}
+    32,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Cellular polyurethane/polyisocyanuratei (CFC11 exp.) (unfaced),  !- Name
+    Rough,                   !- Roughness
+    0.025,                   !- Thickness {m}
+    0.0245,                  !- Conductivity {W/m-K}
+    24,                      !- Density {kg/m3}
+    1590;                    !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Cellular polyisocyanuratei (CFC-11 exp.) (gaspermeable facers),  !- Name
+    Rough,                   !- Roughness
+    0.025,                   !- Thickness {m}
+    0.0245,                  !- Conductivity {W/m-K}
+    32,                      !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+  Material,
+    Insulation: Cellular polyisocyanuratej (CFC-11 exp.) (gasimpermeable facers),  !- Name
+    Rough,                   !- Roughness
+    0.025,                   !- Thickness {m}
+    0.02,                    !- Conductivity {W/m-K}
+    32,                      !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
 Construction,
     Dbl Clr 3mm/13mm Air,    !- Name Window
-  CLEAR 6MM,      !- Layer1
+	CLEAR 2.5MM,			!- Layer1
     AIR 13MM,                !- Layer 2
-  CLEAR 6MM;      !- Layer3
+	CLEAR 2.5MM;			!- Layer3
 
 Construction,
     Sgl Grey 3mm,            !- Name
@@ -1819,20 +2291,20 @@ Construction,
 ! For heating, recover 2 hrs early
 
   Schedule:Compact,
-  Htg-SetP-Sch,     !-Name
-  Temperature,      !- Schedule Type Limits Name
-  Through: 12/31,     !- Field 1
-  For: AllDays,     !- Field 2
-  Until: 24:00,6.121997453772702;   !- Field 7
+	Htg-SetP-Sch,			!-Name
+	Temperature,			!- Schedule Type Limits Name
+	Through: 12/31,			!- Field 1
+	For: AllDays,			!- Field 2
+	Until: 24:00,4.857857867492127;		!- Field 7
 
 ! For cooling, recover 1 hr early
 
   Schedule:Compact,
-  Clg-SetP-Sch,     !-Name
-  Temperature,      !- Schedule Type Limits Name
-  Through: 12/31,     !- Field 1
-  For: AllDays,     !- Field 2
-  Until: 24:00,20.130073259745803;    !- Field 7
+	Clg-SetP-Sch,			!-Name
+	Temperature,			!- Schedule Type Limits Name
+	Through: 12/31,			!- Field 1
+	For: AllDays,			!- Field 2
+	Until: 24:00,19.95276581790866;		!- Field 7
 
   Schedule:Compact,
     FanAvailSched,           !- Name
@@ -1854,216 +2326,254 @@ Construction,
     1.2;                     !- Cooling Sizing Factor
   
 !- Begin HVAC Zones and System
-! PTAC (packaged terminal air conditioner) units with a hot water loop serving some zones.
-
-HVACTemplate:Thermostat,
+! PackagedVAV packaged (DX) VAV system using electric reheat.
+  Schedule:Compact,
+    Min OA Sched,            !- Name
+    Fraction,                !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: WeekDays CustomDay1 CustomDay2, !- Field 2
+    Until: 8:00,0.0,         !- Field 3
+    Until: 21:00,1.0,        !- Field 5
+    Until: 24:00,0.0,        !- Field 7
+    For: Weekends Holiday,   !- Field 9
+    Until: 24:00,0.0,        !- Field 10
+    For: SummerDesignDay,    !- Field 12
+    Until: 24:00,1.0,        !- Field 13
+    For: WinterDesignDay,    !- Field 15
+    Until: 24:00,1.0;        !- Field 16
+  
+  HVACTemplate:Thermostat,
     All Zones,               !- Name
     Htg-SetP-Sch,            !- Heating Setpoint Schedule Name
     ,                        !- Constant Heating Setpoint {C}
     Clg-SetP-Sch,            !- Cooling Setpoint Schedule Name
     ;                        !- Constant Cooling Setpoint {C}
 
-  HVACTemplate:Zone:PTAC,
+!-   ===========  ALL OBJECTS IN CLASS: HVACTemplate:Zone:VAV ===========
+
+  HVACTemplate:Zone:VAV,
     SPACE1-1,                !- Zone Name
+    DXVAV Sys 1,             !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Cooling Supply Air Flow Rate {m3/s}
-    autosize,                !- Heating Supply Air Flow Rate {m3/s}
-    ,                        !- No Load Supply Air Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
-    ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-    ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
-    ,                        !- System Availability Schedule Name
-    Cycling,                 !- Supply Fan Operating Mode Schedule Name
-    DrawThrough,             !- Supply Fan Placement
-    0.7,                     !- Supply Fan Total Efficiency
-    75,                      !- Supply Fan Delta Pressure {Pa}
-    0.9,                     !- Supply Fan Motor Efficiency
-    SingleSpeedDX,           !- Cooling Coil Type
-    ,                        !- Cooling Coil Availability Schedule Name
-    autosize,                !- Cooling Coil Rated Capacity {W}
-    autosize,                !- Cooling Coil Rated Sensible Heat Ratio
-    3,                       !- Cooling Coil Rated COP {W/W}
-    Electric,                !- Heating Coil Type
-    ,                        !- Heating Coil Availability Schedule Name
-    autosize,                !- Heating Coil Capacity {W}
-    0.8,                     !- Gas Heating Coil Efficiency
-    ,                        !- Gas Heating Coil Parasitic Electric Load {W}
-    ,                        !- Dedicated Outdoor Air System Name
-    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
-    14.0,                    !- Zone Cooling Design Supply Air Temperature {C}
+    0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+    0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
+    Electric,                !- Reheat Coil Type
+    ,                        !- Reheat Coil Availability Schedule Name
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Supply Plenum Name
+    ,                        !- Return Plenum Name
+    None,                    !- Baseboard Heating Type
+    ,                        !- Baseboard Heating Availability Schedule Name
+    autosize,                !- Baseboard Heating Capacity {W}
+    SystemSupplyAirTemperature,  !- Zone Cooling Design Supply Air Temperature Input Method
+    ,                        !- Zone Cooling Design Supply Air Temperature {C}
     ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
     SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:PTAC,
+  HVACTemplate:Zone:VAV,
     SPACE2-1,                !- Zone Name
+    DXVAV Sys 1,             !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Cooling Supply Air Flow Rate {m3/s}
-    autosize,                !- Heating Supply Air Flow Rate {m3/s}
-    ,                        !- No Load Supply Air Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
-    ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-    ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
-    ,                        !- System Availability Schedule Name
-    Continuous,              !- Supply Fan Operating Mode Schedule Name
-    DrawThrough,             !- Supply Fan Placement
-    0.7,                     !- Supply Fan Total Efficiency
-    75,                      !- Supply Fan Delta Pressure {Pa}
-    0.9,                     !- Supply Fan Motor Efficiency
-    SingleSpeedDX,           !- Cooling Coil Type
-    ,                        !- Cooling Coil Availability Schedule Name
-    autosize,                !- Cooling Coil Rated Capacity {W}
-    autosize,                !- Cooling Coil Rated Sensible Heat Ratio
-    3,                       !- Cooling Coil Rated COP {W/W}
-    HotWater,                !- Heating Coil Type
-    ,                        !- Heating Coil Availability Schedule Name
-    autosize,                !- Heating Coil Capacity {W}
-    0.8,                     !- Gas Heating Coil Efficiency
-    ,                        !- Gas Heating Coil Parasitic Electric Load {W}
-    ,                        !- Dedicated Outdoor Air System Name
-    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
-    14.0,                    !- Zone Cooling Design Supply Air Temperature {C}
+    0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+    0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
+    Electric,                !- Reheat Coil Type
+    ,                        !- Reheat Coil Availability Schedule Name
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Supply Plenum Name
+    ,                        !- Return Plenum Name
+    None,                    !- Baseboard Heating Type
+    ,                        !- Baseboard Heating Availability Schedule Name
+    autosize,                !- Baseboard Heating Capacity {W}
+    SystemSupplyAirTemperature,  !- Zone Cooling Design Supply Air Temperature Input Method
+    ,                        !- Zone Cooling Design Supply Air Temperature {C}
     ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
     SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:PTAC,
+  HVACTemplate:Zone:VAV,
     SPACE3-1,                !- Zone Name
+    DXVAV Sys 1,             !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Cooling Supply Air Flow Rate {m3/s}
-    autosize,                !- Heating Supply Air Flow Rate {m3/s}
-    ,                        !- No Load Supply Air Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
-    ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-    ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
-    ,                        !- System Availability Schedule Name
-    Cycling,                 !- Supply Fan Operating Mode Schedule Name
-    BlowThrough,             !- Supply Fan Placement
-    0.7,                     !- Supply Fan Total Efficiency
-    75,                      !- Supply Fan Delta Pressure {Pa}
-    0.9,                     !- Supply Fan Motor Efficiency
-    SingleSpeedDX,           !- Cooling Coil Type
-    ,                        !- Cooling Coil Availability Schedule Name
-    autosize,                !- Cooling Coil Rated Capacity {W}
-    autosize,                !- Cooling Coil Rated Sensible Heat Ratio
-    3,                       !- Cooling Coil Rated COP {W/W}
-    HotWater,                !- Heating Coil Type
-    ,                        !- Heating Coil Availability Schedule Name
-    autosize,                !- Heating Coil Capacity {W}
-    0.8,                     !- Gas Heating Coil Efficiency
-    ,                        !- Gas Heating Coil Parasitic Electric Load {W}
-    ,                        !- Dedicated Outdoor Air System Name
-    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
-    14.0,                    !- Zone Cooling Design Supply Air Temperature {C}
+    0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+    0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
+    Electric,                !- Reheat Coil Type
+    ,                        !- Reheat Coil Availability Schedule Name
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Supply Plenum Name
+    ,                        !- Return Plenum Name
+    None,                    !- Baseboard Heating Type
+    ,                        !- Baseboard Heating Availability Schedule Name
+    autosize,                !- Baseboard Heating Capacity {W}
+    SystemSupplyAirTemperature,  !- Zone Cooling Design Supply Air Temperature Input Method
+    ,                        !- Zone Cooling Design Supply Air Temperature {C}
     ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
     SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:PTAC,
+  HVACTemplate:Zone:VAV,
     SPACE4-1,                !- Zone Name
+    DXVAV Sys 1,             !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Cooling Supply Air Flow Rate {m3/s}
-    autosize,                !- Heating Supply Air Flow Rate {m3/s}
-    ,                        !- No Load Supply Air Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
-    ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-    ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
-    ,                        !- System Availability Schedule Name
-    Continuous,              !- Supply Fan Operating Mode Schedule Name
-    BlowThrough,             !- Supply Fan Placement
-    0.7,                     !- Supply Fan Total Efficiency
-    75,                      !- Supply Fan Delta Pressure {Pa}
-    0.9,                     !- Supply Fan Motor Efficiency
-    SingleSpeedDX,           !- Cooling Coil Type
-    ,                        !- Cooling Coil Availability Schedule Name
-    autosize,                !- Cooling Coil Rated Capacity {W}
-    autosize,                !- Cooling Coil Rated Sensible Heat Ratio
-    3,                       !- Cooling Coil Rated COP {W/W}
-    Electric,                !- Heating Coil Type
-    ,                        !- Heating Coil Availability Schedule Name
-    autosize,                !- Heating Coil Capacity {W}
-    0.8,                     !- Gas Heating Coil Efficiency
-    ,                        !- Gas Heating Coil Parasitic Electric Load {W}
-    ,                        !- Dedicated Outdoor Air System Name
-    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
-    14.0,                    !- Zone Cooling Design Supply Air Temperature {C}
+    0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+    0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
+    Electric,                !- Reheat Coil Type
+    ,                        !- Reheat Coil Availability Schedule Name
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Supply Plenum Name
+    ,                        !- Return Plenum Name
+    None,                    !- Baseboard Heating Type
+    ,                        !- Baseboard Heating Availability Schedule Name
+    autosize,                !- Baseboard Heating Capacity {W}
+    SystemSupplyAirTemperature,  !- Zone Cooling Design Supply Air Temperature Input Method
+    ,                        !- Zone Cooling Design Supply Air Temperature {C}
     ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
     SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
     50.0,                    !- Zone Heating Design Supply Air Temperature {C}
     ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
 
-  HVACTemplate:Zone:PTAC,
+  HVACTemplate:Zone:VAV,
     SPACE5-1,                !- Zone Name
+    DXVAV Sys 1,             !- Template VAV System Name
     All Zones,               !- Template Thermostat Name
-    autosize,                !- Cooling Supply Air Flow Rate {m3/s}
-    autosize,                !- Heating Supply Air Flow Rate {m3/s}
-    ,                        !- No Load Supply Air Flow Rate {m3/s}
+    autosize,                !- Supply Air Maximum Flow Rate {m3/s}
     ,                        !- Zone Heating Sizing Factor
     ,                        !- Zone Cooling Sizing Factor
+    Constant,                !- Zone Minimum Air Flow Input Method
+    0.3,                     !- Constant Minimum Air Flow Fraction
+    ,                        !- Fixed Minimum Air Flow Rate {m3/s}
+    ,                        !- Minimum Air Flow Fraction Schedule Name
     flow/person,             !- Outdoor Air Method
     0.00944,                 !- Outdoor Air Flow Rate per Person {m3/s}
-    ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-    ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
-    ,                        !- System Availability Schedule Name
-    Cycling,                 !- Supply Fan Operating Mode Schedule Name
+    0.0,                     !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+    0.0,                     !- Outdoor Air Flow Rate per Zone {m3/s}
+    Electric,                !- Reheat Coil Type
+    ,                        !- Reheat Coil Availability Schedule Name
+    Reverse,                 !- Damper Heating Action
+    ,                        !- Maximum Flow per Zone Floor Area During Reheat {m3/s-m2}
+    ,                        !- Maximum Flow Fraction During Reheat
+    ,                        !- Maximum Reheat Air Temperature {C}
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Supply Plenum Name
+    ,                        !- Return Plenum Name
+    None,                    !- Baseboard Heating Type
+    ,                        !- Baseboard Heating Availability Schedule Name
+    autosize,                !- Baseboard Heating Capacity {W}
+    SystemSupplyAirTemperature,  !- Zone Cooling Design Supply Air Temperature Input Method
+    ,                        !- Zone Cooling Design Supply Air Temperature {C}
+    ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
+    SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
+    50.0,                    !- Zone Heating Design Supply Air Temperature {C}
+    ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
+
+!-   ===========  ALL OBJECTS IN CLASS: HVACTemplate:System:PackagedVAV ===========
+
+  HVACTemplate:System:PackagedVAV,
+    DXVAV Sys 1,             !- Name
+    FanAvailSched,           !- System Availability Schedule Name
+    autosize,                !- Supply Fan Maximum Flow Rate {m3/s}
+    autosize,                !- Supply Fan Minimum Flow Rate {m3/s}
     DrawThrough,             !- Supply Fan Placement
     0.7,                     !- Supply Fan Total Efficiency
-    75,                      !- Supply Fan Delta Pressure {Pa}
+    1000,                    !- Supply Fan Delta Pressure {Pa}
     0.9,                     !- Supply Fan Motor Efficiency
-    SingleSpeedDX,           !- Cooling Coil Type
+    1,                       !- Supply Fan Motor in Air Stream Fraction
+    TwoSpeedDX,              !- Cooling Coil Type
     ,                        !- Cooling Coil Availability Schedule Name
-    autosize,                !- Cooling Coil Rated Capacity {W}
+    ,                        !- Cooling Coil Setpoint Schedule Name
+    12.8,                    !- Cooling Coil Design Setpoint {C}
+    autosize,                !- Cooling Coil Capacity {W}
     autosize,                !- Cooling Coil Rated Sensible Heat Ratio
     3,                       !- Cooling Coil Rated COP {W/W}
     Gas,                     !- Heating Coil Type
     ,                        !- Heating Coil Availability Schedule Name
+    ,                        !- Heating Coil Setpoint Schedule Name
+    10,                      !- Heating Coil Design Setpoint {C}
     autosize,                !- Heating Coil Capacity {W}
     0.8,                     !- Gas Heating Coil Efficiency
     ,                        !- Gas Heating Coil Parasitic Electric Load {W}
-    ,                        !- Dedicated Outdoor Air System Name
-    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
-    14.0,                    !- Zone Cooling Design Supply Air Temperature {C}
-    ,                        !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
-    SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
-    50.0,                    !- Zone Heating Design Supply Air Temperature {C}
-    ;                        !- Zone Heating Design Supply Air Temperature Difference {deltaC}
-
-  HVACTemplate:Plant:HotWaterLoop,
-    Hot Water Loop,          !- Name
-    ,                        !- Pump Schedule Name
-    INTERMITTENT,            !- Pump Control Type
-    Default,                 !- Hot Water Plant Operation Scheme Type
-    ,                        !- Hot Water Plant Equipment Operation Schemes Name
-    ,                        !- Hot Water Setpoint Schedule Name
-    82,                      !- Hot Water Design Setpoint {C}
-    ConstantFlow,            !- Hot Water Pump Configuration
-    179352,                  !- Hot Water Pump Rated Head {Pa}
-    OutdoorAirTemperatureReset,  !- Hot Water Setpoint Reset Type
-    82.2,                    !- Hot Water Setpoint at Outdoor Dry-Bulb Low {C}
-    -6.7,                    !- Hot Water Reset Outdoor Dry-Bulb Low {C}
-    65.6,                    !- Hot Water Setpoint at Outdoor Dry-Bulb High {C}
-    10;                      !- Hot Water Reset Outdoor Dry-Bulb High {C}
-
-  HVACTemplate:Plant:Boiler,
-    Main Boiler,             !- Name
-    HotWaterBoiler,          !- Boiler Type
-    autosize,                !- Capacity {W}
-    0.8,                     !- Efficiency
-    NaturalGas,              !- Fuel Type
-    1,                       !- Priority
-    ;                        !- Sizing Factor
+    autosize,                !- Maximum Outdoor Air Flow Rate {m3/s}
+    autosize,                !- Minimum Outdoor Air Flow Rate {m3/s}
+    ProportionalMinimum,     !- Minimum Outdoor Air Control Type
+    Min OA Sched,            !- Minimum Outdoor Air Schedule Name
+    DifferentialDryBulb,     !- Economizer Type
+    NoLockout,               !- Economizer Lockout
+    19,                      !- Economizer Maximum Limit Dry-Bulb Temperature {C}
+    ,                        !- Economizer Maximum Limit Enthalpy {J/kg}
+    ,                        !- Economizer Maximum Limit Dewpoint Temperature {C}
+    4,                       !- Economizer Minimum Limit Dry-Bulb Temperature {C}
+    ,                        !- Supply Plenum Name
+    PLENUM-1,                !- Return Plenum Name
+    InletVaneDampers,        !- Supply Fan Part-Load Power Coefficients
+    CycleOnAny,              !- Night Cycle Control
+    ,                        !- Night Cycle Control Zone Name
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness
+    0.65,                    !- Latent Heat Recovery Effectiveness
+    None,                    !- Cooling Coil Setpoint Reset Type
+    None,                    !- Heating Coil Setpoint Reset Type
+    None,                    !- Dehumidification Control Type
+    ,                        !- Dehumidification Control Zone Name
+    60,                      !- Dehumidification Setpoint {percent}
+    None,                    !- Humidifier Type
+    ,                        !- Humidifier Availability Schedule Name
+    0.000001,                !- Humidifier Rated Capacity {m3/s}
+    2690,                    !- Humidifier Rated Electric Power {W}
+    ,                        !- Humidifier Control Zone Name
+    30,                      !- Humidifier Setpoint {percent}
+    NonCoincident;           !- Sizing Option
