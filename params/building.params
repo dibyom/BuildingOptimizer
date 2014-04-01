@@ -13,8 +13,8 @@ select.tournament.size 						= 20
 
 pop.subpop.0.size 	=	50
 
-pop.subpop.0.species = ec.vector.IntegerVectorSpecies
-pop.subpop.0.species.ind = ec.vector.IntegerVectorIndividual
+pop.subpop.0.species = ec.vector.FloatVectorSpecies
+pop.subpop.0.species.ind = ec.vector.DoubleVectorIndividual
 pop.subpop.0.species.genome-size = 5
 pop.subpop.0.species.min-gene = 0
 pop.subpop.0.species.max-gene = 10
