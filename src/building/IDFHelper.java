@@ -163,9 +163,6 @@ public class IDFHelper
 		String layer3 = "\t" + insulation_materials[insulationMaterial] 
 		+ ",\t\t\t!- Layer 3";
 
-		String layer4 = "\t" + last_layer_materials[lastLayerMaterial]
-		+ ";\t\t\t!- Layer 4";
-		
 		StringBuilder lineBuilder = new StringBuilder();
 		
 		//Append layer 1

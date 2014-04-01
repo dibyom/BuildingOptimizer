@@ -26,7 +26,7 @@ public class Building extends Problem implements SimpleProblemForm {
 
 	// Ensure the number of decision variables is 5
 	int numDecisionVars = genome.length; 
-	if(numDecisionVars! = NUM_DECISION_VARIABLES) throw new RuntimeException("Building needs exactly 5 decision variables (genes).");
+	if(numDecisionVars != NUM_DECISION_VARIABLES) throw new RuntimeException("Building needs exactly 5 decision variables (genes).");
 
 	
 	/** 
