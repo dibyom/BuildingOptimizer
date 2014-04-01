@@ -29,7 +29,7 @@ public class IDFHelper
 	
 	public static void main(String argv[])
 	{
-		double[] genome = {2.0,2.0,2.0,18,26};
+		double[] genome = {4.0,1.0,1.0,18,26};
 		//modifyIDF(genome);
 		//parseBuildingCSV();
 		IDFHelper i = new IDFHelper();
@@ -69,6 +69,7 @@ public class IDFHelper
 					//See if it is a Construction E+ object
 					if (line.contains("Construction,"))
 					{	
+
 						//Modify the class as needed and store it as a string.
 						StringBuilder lineBuilder = new StringBuilder("Construction,");
 						
@@ -157,8 +158,7 @@ public class IDFHelper
 	*/
 	public String changeInsulation(BufferedReader br, int insulationMaterial) throws IOException
 	{
-		String currentLine = null;
-
+		String currentLine = null;	
 		String layer3 = "\t" + Materials.wall_materials[insulationMaterial] 
 		+ ",\t\t\t!- Layer 3";
 
