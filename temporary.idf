@@ -740,9 +740,9 @@ Construction,
  ! ======Finish added Glazing materials
 Construction,
     Dbl Clr 3mm/13mm Air,    !- Name Window
-	CLEAR 6MM,			!- Layer1
+	GREY 3MM,			!- Layer1
     AIR 13MM,                !- Layer 2
-	CLEAR 6MM;			!- Layer3
+	GREY 3MM;			!- Layer3
 
 Construction,
     Sgl Grey 3mm,            !- Name
@@ -1918,7 +1918,7 @@ Construction,
 	Temperature,			!- Schedule Type Limits Name
 	Through: 12/31,			!- Field 1
 	For: AllDays,			!- Field 2
-	Until: 24:00,2.0;		!- Field 7
+	Until: 24:00,5.518700325766892;		!- Field 7
 
 ! For cooling, recover 1 hr early
 
@@ -1927,7 +1927,7 @@ Construction,
 	Temperature,			!- Schedule Type Limits Name
 	Through: 12/31,			!- Field 1
 	For: AllDays,			!- Field 2
-	Until: 24:00,18.0;		!- Field 7
+	Until: 24:00,19.005225316520402;		!- Field 7
 
   Schedule:Compact,
     FanAvailSched,           !- Name
