@@ -20,7 +20,7 @@ public class ObjectiveCalculator{
 	public static void main(String[] args) {
 		//double[] genome = {1,1,0};
 		//ObjectiveCalculator oc = new ObjectiveCalculator("building_base", genome);
-		oc.parseBuildingCSV();
+		//oc.parseBuildingCSV();
 	}
 	//double array should be int array. Fix in ECJ
 	public ObjectiveCalculator(String buildingFileName, int[] genome)
