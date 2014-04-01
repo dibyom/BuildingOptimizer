@@ -29,11 +29,11 @@ public class IDFHelper
 	
 	public static void main(String argv[])
 	{
-		double[] genome = {4.0,1.0,1.0,18,26};
-		//modifyIDF(genome);
-		//parseBuildingCSV();
-		IDFHelper i = new IDFHelper();
-		i.modifyIDF(genome);
+		// double[] genome = {4.0,1.0,1.0,18,26};
+		// //modifyIDF(genome);
+		// //parseBuildingCSV();
+		// IDFHelper i = new IDFHelper();
+		// i.modifyIDF(genome);
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class IDFHelper
 	* @return the modified IDF File
 	* @TODO pass in file as a param 
 	*/
-	public File modifyIDF(double[] genome)
+	public File modifyIDF(int[] genome)
 	{
 		
 		String oldFileName = "building_base.idf";
@@ -225,7 +225,7 @@ public class IDFHelper
 	* @param hvacSystemType the index of the HVACSystemType
 	* @param fileName the file where the HVACTemplate will be appended
 	*/
-	public void appendHVACSystem(double hvacSystemType, String fileName)
+	public void appendHVACSystem(int hvacSystemType, String fileName)
 	{
 		try
 		{
@@ -248,7 +248,7 @@ public class IDFHelper
 	* @param temp temperature for the schedule
 	* @return the IDF schedule object as a string
 	*/
-	public String generateSchedule(String name, double temp)
+	public String generateSchedule(String name, int temp)
 	{
 		StringBuilder lineBuilder = new StringBuilder("\t"+name+",\t\t\t!-Name\n");
 		lineBuilder.append("\tTemperature,\t\t\t!- Schedule Type Limits Name\n");

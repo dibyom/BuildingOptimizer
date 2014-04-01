@@ -16,13 +16,13 @@ public class Building extends Problem implements SimpleProblemForm {
 	{
 		
 	//Ensure that the individual is of right type
-	if( !( ind instanceof DoubleVectorIndividual ) )
-	  state.output.fatal( "The individuals for this problem should be DoubleVectorIndividuals." );
+	if( !( ind instanceof IntegerVectorIndividual ) )
+	  state.output.fatal( "The individuals for this problem should be IntegerVectorIndividuals." );
 
 	float[] objectives = ((MultiObjectiveFitness)ind.fitness).getObjectives();
 	// Copy of ind
-	DoubleVectorIndividual temp = (DoubleVectorIndividual)ind;
-	double[] genome = temp.genome;
+	IntegerVectorIndividual temp = (IntegerVectorIndividual)ind;
+	int[] genome = temp.genome;
 
 	// Ensure the number of decision variables is 5
 	int numDecisionVars = genome.length; 

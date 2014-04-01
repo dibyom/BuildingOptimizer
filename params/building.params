@@ -13,32 +13,32 @@ select.tournament.size 						= 20
 
 pop.subpop.0.size 	=	50
 
-pop.subpop.0.species = ec.vector.FloatVectorSpecies
-pop.subpop.0.species.ind = ec.vector.DoubleVectorIndividual
+pop.subpop.0.species = ec.vector.IntegerVectorSpecies
+pop.subpop.0.species.ind = ec.vector.IntegerVectorIndividual
 pop.subpop.0.species.genome-size = 5
 pop.subpop.0.species.min-gene = 0
 pop.subpop.0.species.max-gene = 10
 
 #Insulation Material
-pop.subpop.0.species.min-gene.0 = 0.0
-pop.subpop.0.species.max-gene.0 = 8.9
+pop.subpop.0.species.min-gene.0 = 0
+pop.subpop.0.species.max-gene.0 = 8
 
 #Glazing Material
-pop.subpop.0.species.min-gene.1 = 0.0
-pop.subpop.0.species.max-gene.1 = 12.9
+pop.subpop.0.species.min-gene.1 = 0
+pop.subpop.0.species.max-gene.1 = 12
 
 #HVAC System type
-pop.subpop.0.species.min-gene.2 = 0.0
-pop.subpop.0.species.max-gene.2 = 8.9
+pop.subpop.0.species.min-gene.2 = 0
+pop.subpop.0.species.max-gene.2 = 8
 
 
 #Heating Set Point
-pop.subpop.0.species.min-gene.3 = 17.0
-pop.subpop.0.species.max-gene.3 = 22.0
+pop.subpop.0.species.min-gene.3 = 17
+pop.subpop.0.species.max-gene.3 = 22
 
 #Cooling Set Point
-pop.subpop.0.species.min-gene.4 = 26.0
-pop.subpop.0.species.max-gene.4 = 30.0
+pop.subpop.0.species.min-gene.4 = 26
+pop.subpop.0.species.max-gene.4 = 30
 
 pop.subpop.0.species.fitness = ec.multiobjective.nsga2.NSGA2MultiObjectiveFitness
 pop.subpop.0.species.fitness.num-objectives = 2

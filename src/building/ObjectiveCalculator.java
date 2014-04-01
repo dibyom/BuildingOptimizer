@@ -18,19 +18,19 @@ public class ObjectiveCalculator{
 	public static final double ELECTRICTY_RATE = 1.5 ;
 	
 	public static void main(String[] args) {
-		double[] genome = {1,1,0};
-		ObjectiveCalculator oc = new ObjectiveCalculator("building_base", genome);
+		//double[] genome = {1,1,0};
+		//ObjectiveCalculator oc = new ObjectiveCalculator("building_base", genome);
 		oc.parseBuildingCSV();
 	}
 	//double array should be int array. Fix in ECJ
-	public ObjectiveCalculator(String buildingFileName, double[] genome)
+	public ObjectiveCalculator(String buildingFileName, int[] genome)
 	{
 		this.buildingFileName = buildingFileName;
 		this.insulationMaterial =(int) genome[0];
 		this.glazingMaterial = (int) genome[1];
 		this.hvacSystem = (int) genome[2];
-		this.electricity = -1.0;
-		this.naturalGas = -1.0;
+		this.electricity = -1;
+		this.naturalGas = -1;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class ObjectiveCalculator{
 	*/
 	public double calculateEnergy()
 	{
-		if(electricity < 0.0 || naturalGas < 0.0 )
+		if(electricity < 0 || naturalGas < 0 )
 			parseBuildingCSV();
 		return electricity + naturalGas;
 	}
@@ -46,7 +46,7 @@ public class ObjectiveCalculator{
 
 	public double calculateCost()
 	{
-		if(electricity < 0.0 || naturalGas < 0.0 )
+		if(electricity < 0 || naturalGas < 0 )
 			parseBuildingCSV();
 		return calculateOperationalCost() + calculateInstallationCost();
 	}
