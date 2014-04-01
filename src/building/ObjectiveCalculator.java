@@ -24,7 +24,7 @@ public class ObjectiveCalculator{
 		//oc.parseBuildingCSV();
 	}
 	//double array should be int array. Fix in ECJ
-	public ObjectiveCalculator(String buildingFileName, int[] genome)
+	public ObjectiveCalculator(String buildingFileName, double[] genome)
 	{
 		this.buildingFileName = buildingFileName;
 		this.insulationMaterial =(int) genome[0];

@@ -42,7 +42,7 @@ public class IDFHelper
 	* @return the modified IDF File
 	* @TODO pass in file as a param 
 	*/
-	public File modifyIDF(int[] genome)
+	public File modifyIDF(double[] genome)
 	{
 		
 		String oldFileName = "building_base.idf";
@@ -104,13 +104,13 @@ public class IDFHelper
 						if(nextLine.contains(HEATING_SET_POINT_NAME + ",")) 
 						{
 							removeObject(br);
-							String schedule = generateSchedule(HEATING_SET_POINT_NAME, genome[2]);
+							String schedule = generateSchedule(HEATING_SET_POINT_NAME, (int) genome[2]);
 							bw.write(schedule);	
 						}
 						else if (nextLine.contains(COOLING_SET_POINT_NAME+","))
 						{
 							removeObject(br);
-							String schedule = generateSchedule(COOLING_SET_POINT_NAME, genome[3]);
+							String schedule = generateSchedule(COOLING_SET_POINT_NAME, (int) genome[3]);
 							bw.write(schedule);
 						}
 						else
@@ -146,7 +146,7 @@ public class IDFHelper
 		newFile.renameTo(oldFile); 
 
 		// Append the string to the file
-		appendHVACSystem(genome[2], oldFileName);
+		appendHVACSystem((int) genome[2], oldFileName);
 		
 		return oldFile;
 	}
