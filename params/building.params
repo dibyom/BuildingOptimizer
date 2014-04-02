@@ -18,7 +18,7 @@ pop.subpop.0.species.pipe.source.0.source.1 = same
 select.tournament.size 						= 5
 
 #Population size
-pop.subpop.0.size 	= 1	
+pop.subpop.0.size 	= 20	
 
 #Population type : DoubleVectors
 pop.subpop.0.species = ec.vector.FloatVectorSpecies
