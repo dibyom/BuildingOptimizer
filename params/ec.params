@@ -41,6 +41,14 @@
 #
 # The '.' is the delimiter for hierarchical elements.  
 # You generally shouldn't begin or end a property with an '.'
+# We're not writing checkpoint files.  If we were, we'd do it every
+# generation, and the prefix to all the files would be "ec.*"
+checkpoint =				false
+checkpoint-modulo =                     1
+checkpoint-prefix = 			ec
+
+
+
 #
 # If you want a list to first load some parent lists, include them as parameters:
 #
