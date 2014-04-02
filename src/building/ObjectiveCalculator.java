@@ -14,15 +14,14 @@ public class ObjectiveCalculator{
 	private double electricity;
 	private double naturalGas;
 
+	// Electricity rate for January 2014 in $/KWh
+	public static final double NATURAL_GAS_RATE = 0.0831;
+	// Natural gas rate for January 2014 in $/KWh
+	public static final double ELECTRICTY_RATE = 0.0809;
 
-	public static final double NATURAL_GAS_RATE = 8.31 ;
-	public static final double ELECTRICTY_RATE = 8.09 ;
+	//EnergyPlus returns energy in Joules. Convert to KWh
+	public static final double JOULE_KWH_CONVERSION_FACTOR = 2.77777778E-7d;
 	
-	public static void main(String[] args) {
-		//double[] genome = {1,1,0};
-		//ObjectiveCalculator oc = new ObjectiveCalculator("building_base", genome);
-		//oc.parseBuildingCSV();
-	}
 	//double array should be int array. Fix in ECJ
 	public ObjectiveCalculator(String buildingFileName, double[] genome)
 	{
@@ -55,8 +54,8 @@ public class ObjectiveCalculator{
 
 	public double calculateInstallationCost()
 	{
-		double insulationCost = BuildingProperties.NO_WALLS * BuildingProperties.WALL_AREA * Materials.wall_materials_cost[insulationMaterial];
-		double glazingCost = BuildingProperties.NO_WINDOWS * BuildingProperties.WINDOW_AREA * Materials.glazing_materials_cost[glazingMaterial];
+		double insulationCost = BuildingProperties.NO_WALLS * Materials.wall_materials_cost[insulationMaterial];
+		double glazingCost = BuildingProperties.NO_WINDOWS * Materials.glazing_materials_cost[glazingMaterial];
 		double hvacSystemCost = Materials.hvac_systems_cost[hvacSystem];
 
 		return insulationCost + glazingCost + hvacSystemCost;
@@ -74,7 +73,6 @@ public class ObjectiveCalculator{
 
 	/**
 	* Parse the building.csv file return the columns
-	* @TODO Fix fileName to variable
 	*/
 	public void parseBuildingCSV()
 	{
@@ -85,8 +83,8 @@ public class ObjectiveCalculator{
 			CSVReader reader = new CSVReader(new FileReader("Output/building_base.csv"), ',', '\"', 1);
 			List csvRows = reader.readAll();
 			lastRow = (String[]) csvRows.get(csvRows.size()-1);
-			this.electricity = Float.parseFloat(lastRow[1]);
-			this.naturalGas = Float.parseFloat(lastRow[3]) ;
+			this.electricity = Float.parseFloat(lastRow[1]) * JOULE_KWH_CONVERSION_FACTOR;
+			this.naturalGas = Float.parseFloat(lastRow[3])  * JOULE_KWH_CONVERSION_FACTOR;
 			
 		}
 		catch(IOException e)

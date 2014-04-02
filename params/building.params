@@ -18,7 +18,7 @@ pop.subpop.0.species.pipe.source.0.source.1 = same
 select.tournament.size 						= 5
 
 #Population size
-pop.subpop.0.size 	=	50
+pop.subpop.0.size 	= 1	
 
 #Population type : DoubleVectors
 pop.subpop.0.species = ec.vector.FloatVectorSpecies
@@ -72,12 +72,3 @@ pop.subpop.0.species.mutation-distribution-index = 20
 pop.subpop.0.species.mutation-bounded = true
 pop.subpop.0.species.mutation-prob = 0.2
 
-## Set up checkpointing
-checkpoint = true
-
-# Checkpoints will be set after checkpoint-modulo # of generations
-checkpoint-modulo = 2 
-
-# prefix and folder for easy identification
-checkpoint-prefix = building
-checkpoint-directory = ../checkpoints/
